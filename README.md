@@ -1,22 +1,22 @@
-# Licenciatura em Engenharia Inform·tica e de Computadores - Instituto Superior TÈcnico
-Projects made for subjects in my Bachelor of Computer Science and Engineering at Instituto Superior TÈcnico, Universidade de Lisboa.
+# Licenciatura em Engenharia Inform√°tica e de Computadores - Instituto Superior T√©cnico
+Projects made for subjects in my Bachelor of Computer Science and Engineering at Instituto Superior T√©cnico, Universidade de Lisboa.
 
 ### 1st Year
-* [FP - Fundamentos da ProgramaÁ„o / Foundations of Programming (Python)] (1st_Year/FP)
-* [IAC - IntroduÁ„o ‡ Arquitectura de Computadores / Introduction to Computer Architecture (Assembly)] (1st_Year/IAC)
-* [LP - LÛgica para ProgramaÁ„o / Logic for Programming (Prolog)] (1st_Year/LP)
-* [IAED - IntroduÁ„o aos Algoritmos e Estruturas de Dados / Introduction to Algorithms and Data Structures (C)] (1st_Year/IAED)
+* [FP - Fundamentos da Programa√ß√£o / Foundations of Programming (Python)] (1st_Year/FP)
+* [IAC - Introdu√ß√£o √† Arquitectura de Computadores / Introduction to Computer Architecture (Assembly)] (1st_Year/IAC)
+* [LP - L√≥gica para Programa√ß√£o / Logic for Programming (Prolog)] (1st_Year/LP)
+* [IAED - Introdu√ß√£o aos Algoritmos e Estruturas de Dados / Introduction to Algorithms and Data Structures (C)] (1st_Year/IAED)
 
 ### 2nd Year
 * [SO - Sistemas Operativos / Operating Systems (C)] (2nd_Year/SO)
-* [ASA - An·lise e Sintese de Algoritmos / Analysis and Synthesis of Algorithms (C)] (2nd_Year/ASA)
-* [IPM - Interfaces Pessoa M·quina / Human-Computer Interaction (HTML/CSS/JS/JQuery)] (2nd_Year/IPM)
+* [ASA - An√°lise e Sintese de Algoritmos / Analysis and Synthesis of Algorithms (C)] (2nd_Year/ASA)
+* [IPM - Interfaces Pessoa M√°quina / Human-Computer Interaction (HTML/CSS/JS/JQuery)] (2nd_Year/IPM)
 
 ### 3rd Year
 * [BD - Bases de Dados / Databases (SQL/PHP)] (3rd_Year/BD)
-* [CG - ComputaÁ„o Gr·fica / Computer Graphics (JavaScript)] (3rd_Year/CG)
-* [IA - InteligÍncia Artificial / Artificial Intelligence (Common Lisp)] (3rd_Year/IA)
+* [CG - Computa√ß√£o Gr√°fica / Computer Graphics (JavaScript)] (3rd_Year/CG)
+* [IA - Intelig√™ncia Artificial / Artificial Intelligence (Common Lisp)] (3rd_Year/IA)
 * [RC - Redes e Computadores / Computer Networks (C)] (3rd_Year/RC)
 
 
-## Attention: There is only a partial part of this repositorie translated to English. I am sorry for the inconvenience!
+## Attention: There is only a partial part of this repository translated to English. I am sorry for the inconvenience!
