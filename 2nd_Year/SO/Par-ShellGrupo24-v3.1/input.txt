@@ -1,0 +1,9 @@
+fibonacci 4
+fibonacci 100000
+fibonacci 100001
+fibonacci 10
+fibonacci 110
+fibonacci 45000
+fibonacci 20000
+inexisting file
+exit
