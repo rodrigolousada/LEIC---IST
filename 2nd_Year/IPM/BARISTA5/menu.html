@@ -1,0 +1,330 @@
+<html>
+<head>
+<style>
+#ReservaSnooker {
+	position: fixed;
+	height:100%;
+	width:100%;
+	padding:0;
+	Marge:0; 
+	background:#4A7023;
+	font-family: Sans-Serif;
+}
+		
+.caixaslaterais { position:fixed; height:100% }
+	
+#Esquerda {
+	padding-left:2%;
+	width:70%;
+	clear: left;
+}
+		
+#Direita {
+	left:70%;
+	width:30%;
+	padding:2%;
+	padding-top:7%;
+}
+
+#title {
+	font-size:300%;
+	font-family: Sans-Serif;
+}
+
+#horario {
+	width:90%;
+	overflow-y: auto;
+	height: 80%;
+	background:#458B00;
+	border: black solid;
+}
+
+#tabela_horario{
+	border-collapse: collapse;
+	width:100%;
+}
+		
+#tabela_horario th, #tabela_horario td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+#tabela_horario tr:hover{background-color:#004F00}
+
+#horarioa {
+	width:90%;
+	overflow-y: auto;
+	height: 80%;
+	background:#458B00;
+	border: black solid;
+	display:none;
+}
+
+#tabela_horarioa{
+	border-collapse: collapse;
+	width:100%;
+}
+		
+#tabela_horarioa th, #tabela_horarioa td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+#tabela_horarioa tr:hover{background-color:#004F00}
+
+#tabela_horas{
+	font-size:400%;
+	border-collapse: collapse;
+	width:80%;
+	text-align:center;
+	margin-top:25%;
+	font-family: Sans-Serif;
+}
+		
+.buttons {
+	font-size:20px;
+	color:white;
+	background-color:green;
+	border-color: black;
+}
+
+#sa { opacity:0.5; }
+</style>
+</head>
+<body>
+<div id="">
+		<p id="time3"></p>
+		<div id="Esquerda" class="caixaslaterais">
+			<h1 id="title">Reservar Snooker: 4&euro;/h</h1>
+			<button class="buttons" id="s" type="button" onclick="makeVisible('horario'); makeUnvisible('horarioa'); changetable('s','sa');">Hoje</button>
+			<button class="buttons" id="sa" type="button" onclick="makeVisible('horarioa'); makeUnvisible('horario'); changetable('sa','s');">Amanh&atilde;</button>
+			<div id="horario">
+				<table id="tabela_horario">
+				  <tr onclick="selected('s1')" >
+					<th>00h-01h</th>
+					<th id="s1" ></th>
+				  </tr>
+				  <tr onclick="selected('s102')">
+					<th>01h-02h</th>
+					<th id="s102"></th>
+				  </tr>
+				  <tr onclick="selected('s203')">
+					<th>02h-03h</th>
+					<th id="s203"></th>
+				  </tr>
+				  <tr onclick="selected('s304')">
+					<th>03h-04h</th>
+					<th id="s304"></th>
+				  </tr>
+				  <tr onclick="selected('s405')">
+					<th>04h-05h</th>
+					<th id="s405"></th>
+				  </tr>
+				  <tr onclick="selected('s506')">
+					<th>05h-06h</th>
+					<th id="s506"></th>
+				  </tr>
+				  <tr onclick="selected('s607')">
+					<th>06h-07h</th>
+					<th id="s607"></th>
+				  </tr>
+				  <tr onclick="selected('s708')">
+					<th>07h-08h</th>
+					<th id="s708"></th>
+				  </tr>
+				  <tr onclick="selected('s809')">
+					<th>08h-09h</th>
+					<th id="s809"></th>
+				  </tr>
+				  <tr onclick="selected('s910')">
+					<th>09h-10h</th>
+					<th id="s910"></th>
+				  </tr>
+				  <tr onclick="selected('s1011')">
+					<th>10h-11h</th>
+					<th id="s1011"></th>
+				  </tr>
+				  <tr onclick="selected('s1112')">
+					<th>11h-12h</th>
+					<th id="s1112"></th>
+				  </tr>
+				  <tr onclick="selected('s1213')">
+					<th>12h-13h</th>
+					<th id="s1213"></th>
+				  </tr>
+				  <tr onclick="selected('s1314')">
+					<th>13h-14h</th>
+					<th id="s1314"></th>
+				  </tr>
+				  <tr onclick="selected('s1415')">
+					<th>14h-15h</th>
+					<th id="s1415"></th>
+				  </tr>
+				  <tr onclick="selected('s1516')">
+					<th>15h-16h</th>
+					<th id="s1516"></th>
+				  </tr>
+				  <tr onclick="selected('s1617')">
+					<th>16h-17h</th>
+					<th id="s1617"></th>
+				  </tr>
+				  <tr onclick="selected('s1718')">
+					<th>17h-18h</th>
+					<th id="s1718"></th>
+				  </tr>
+				  <tr onclick="selected('s1819')">
+					<th>18h-19h</th>
+					<th id="s1819"></th>
+				  </tr>
+				  <tr onclick="selected('s1920')">
+					<th>19h-20h</th>
+					<th id="s1920"></th>
+				  </tr>
+				  <tr onclick="selected('s2021')">
+					<th>20h-21h</th>
+					<th id="s2021"></th>
+				  </tr>
+				  <tr onclick="selected('s2122')">
+					<th>21h-22h</th>
+					<th id="s2122"></th>
+				  </tr>
+				  <tr onclick="selected('s2223')">
+					<th>22h-23h</th>
+					<th id="s2223"></th>
+				  </tr>
+				  <tr onclick="selected('s2324')">
+					<th>23h-00h</th>
+					<th id="s2324"></th>
+				  </tr>
+				</table>
+			</div>
+			
+			<div id="horarioa">
+				<table id="tabela_horarioa">
+				  <tr onclick="selected('sa1')" >
+					<th>00h-01h</th>
+					<th id="sa1" ></th>
+				  </tr>
+				  <tr onclick="selected('sa102')">
+					<th>01h-02h</th>
+					<th id="sa102"></th>
+				  </tr>
+				  <tr onclick="selected('sa203')">
+					<th>02h-03h</th>
+					<th id="sa203"></th>
+				  </tr>
+				  <tr onclick="selected('sa304')">
+					<th>03h-04h</th>
+					<th id="sa304"></th>
+				  </tr>
+				  <tr onclick="selected('sa405')">
+					<th>04h-05h</th>
+					<th id="sa405"></th>
+				  </tr>
+				  <tr onclick="selected('sa506')">
+					<th>05h-06h</th>
+					<th id="sa506"></th>
+				  </tr>
+				  <tr onclick="selected('sa607')">
+					<th>06h-07h</th>
+					<th id="sa607"></th>
+				  </tr>
+				  <tr onclick="selected('sa708')">
+					<th>07h-08h</th>
+					<th id="sa708"></th>
+				  </tr>
+				  <tr onclick="selected('sa809')">
+					<th>08h-09h</th>
+					<th id="sa809"></th>
+				  </tr>
+				  <tr onclick="selected('sa910')">
+					<th>09h-10h</th>
+					<th id="sa910"></th>
+				  </tr>
+				  <tr onclick="selected('sa1011')">
+					<th>10h-11h</th>
+					<th id="sa1011"></th>
+				  </tr>
+				  <tr onclick="selected('sa1112')">
+					<th>11h-12h</th>
+					<th id="sa1112"></th>
+				  </tr>
+				  <tr onclick="selected('sa1213')">
+					<th>12h-13h</th>
+					<th id="sa1213"></th>
+				  </tr>
+				  <tr onclick="selected('sa1314')">
+					<th>13h-14h</th>
+					<th id="sa1314"></th>
+				  </tr>
+				  <tr onclick="selected('sa1415')">
+					<th>14h-15h</th>
+					<th id="sa1415"></th>
+				  </tr>
+				  <tr onclick="selected('sa1516')">
+					<th>15h-16h</th>
+					<th id="sa1516"></th>
+				  </tr>
+				  <tr onclick="selected('sa1617')">
+					<th>16h-17h</th>
+					<th id="sa1617"></th>
+				  </tr>
+				  <tr onclick="selected('sa1718')">
+					<th>17h-18h</th>
+					<th id="sa1718"></th>
+				  </tr>
+				  <tr onclick="selected('sa1819')">
+					<th>18h-19h</th>
+					<th id="sa1819"></th>
+				  </tr>
+				  <tr onclick="selected('sa1920')">
+					<th>19h-20h</th>
+					<th id="sa1920"></th>
+				  </tr>
+				  <tr onclick="selected('sa2021')">
+					<th>20h-21h</th>
+					<th id="sa2021"></th>
+				  </tr>
+				  <tr onclick="selected('sa2122')">
+					<th>21h-22h</th>
+					<th id="sa2122"></th>
+				  </tr>
+				  <tr onclick="selected('sa2223')">
+					<th>22h-23h</th>
+					<th id="sa2223"></th>
+				  </tr>
+				  <tr onclick="selected('sa2324')">
+					<th>23h-00h</th>
+					<th id="sa2324"></th>
+				  </tr>
+				</table>
+			</div>
+		</div>
+		
+		<div id="Direita" class="caixaslaterais">
+			<table id="tabela_horas">
+				<!--<tr>
+					<th>Das</th>
+					<th>At&eacute;</th>
+				</tr>
+				<tr>
+					<td>12h</td>
+					<td>14h</td>
+				</tr>-->
+				<tr>
+					<td colspan="2">Pre&ccedil;o Estimado</th>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="price">0</span>&euro;</th>
+				</tr>
+				<tr>
+					<td><button class="buttons" type="button" onclick="canceling(); cancelasnooker()">Cancelar</button></td>
+					<td><button class="buttons" type="button" onclick="toggleVisible('AreYouSurePopUpS');">Reservar</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

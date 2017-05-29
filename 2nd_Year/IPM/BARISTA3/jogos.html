@@ -1,0 +1,52 @@
+<html>
+<head>
+	<script type="text/javascript">
+		<!--relogio-->
+		function startTime(){
+
+			var d=new Date();
+			var nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
+			if(nyear<1000) nyear+=1900;
+			var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+			if(nmin<=9) nmin="0"+nmin
+			if(nsec<=9) nsec="0"+nsec;
+			document.getElementById('time').innerHTML=""+ndate+"/"+(nmonth+1)+"/"+nyear+" "+nhour+":"+nmin+"";
+			t=setTimeout('startTime()',500);
+		}
+		
+	</script>
+	<link rel="stylesheet"	href="stylemenu.css">	
+</head>
+<!--onload faz com que semrpe q abras o site o relogio comeca-->
+<body onload="startTime()">
+
+	<a href="https://www.facebook.com/carlos.antunes.5458" >
+		<div class="caixasjogos" id="dardos">
+			<img id="imagemdardos" src = "dardos.png" width="51%">
+			<p style="color:black; text-align:center; font-size:300%; font-family:Bookman Old Style; font-weight:bold;">Dardos</p>
+		</div>
+	</a>
+	
+	<a href="https://www.facebook.com/carlos.antunes.5458" >
+		<div class="caixasjogos" id="snooker" >
+			<p id="time" style="float:right;padding-right:2%;color:#FFFFFF;font:16pt Courier; font-weight:bold;"></p>
+			<img id="imagemsnooker" src = "snooker.png" width="70%">
+			<p style="color:black; text-align:center; font-size:300%; font-family:Bookman Old Style; font-weight:bold;">Snooker</p>
+		</div>
+	</a>
+	
+	
+	<a href="https://www.facebook.com/carlos.antunes.5458" >
+		<div id="UTILIZADOR">	
+				<img id="utilizadores" src = "utilizador.png" width="58%">
+		</div>
+	</a>
+	
+	<a href="protFuncional1-beta.html" >
+		<div id="voltar" >
+			<img id="voltarimagem" src = "voltar.png" />
+		</div>
+	</a>
+
+</body>
+</html>

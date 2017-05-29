@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		<!--relogio-->
+		var nmonth;
+		var nhour;
+		var nmin;
+		var nsec;
+		function startTime(){
+
+			var d=new Date();
+			 nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
+			if(nyear<1000) nyear+=1900;
+			 nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+			if(nmin<=9) nmin="0"+nmin
+			if(nsec<=9) nsec="0"+nsec;
+			document.getElementById('time1').innerHTML=""+ndate+"/"+(nmonth+1)+"/"+nyear+" "+nhour+":"+nmin+"";
+			document.getElementById('time2').innerHTML=""+ndate+"/"+(nmonth+1)+"/"+nyear+" "+nhour+":"+nmin+"";
+			document.getElementById('time3').innerHTML=""+ndate+"/"+(nmonth+1)+"/"+nyear+" "+nhour+":"+nmin+"";
+			document.getElementById('time4').innerHTML=""+ndate+"/"+(nmonth+1)+"/"+nyear+" "+nhour+":"+nmin+"";
+			document.getElementById('time5').innerHTML=""+ndate+"/"+(nmonth+1)+"/"+nyear+" "+nhour+":"+nmin+"";
+			document.getElementById('time6').innerHTML=""+ndate+"/"+(nmonth+1)+"/"+nyear+" "+nhour+":"+nmin+"";
+			t=setTimeout('startTime()',500);
+			if(nhour.valueOf()+nmin.valueOf()+nsec.valueOf() == 0) cleanDay();
+			offreserve();
+		}
+		
+		function toggleVisible(id){
+			var e = document.getElementById(id);
+			if(e.style.display == 'block') { e.style.display = 'none'; }
+			else {e.style.display = 'block';}
+		}
+		function makeVisible(id){
+			var e = document.getElementById(id);
+			e.style.display = 'block';
+		}
+		
+		function makeUnvisible(id){
+			var e = document.getElementById(id);
+			e.style.display = 'none';
+		}
+		
+		function ajuda(){
+			toggleVisible('HelpPopUp');
+		}
+		
+		function selected(id) {
+			var price_per_hour = 4;
+			var f = document.getElementById('price').innerHTML;
+			var price = parseInt(f);
+			var e = document.getElementById(id);
+			if(e.innerHTML=="RESERVADO" || e.innerHTML=="EXPIRADO") {
+				toggleVisible('ImpossibleActionPopUp');
+			}
+			else if(e.innerHTML=="=========") {
+				e.innerHTML="";
+				price = price - price_per_hour;
+			}
+			else{
+				e.innerHTML="=========";
+				price = price + price_per_hour;
+			}
+			document.getElementById('price').innerHTML = price.valueOf();
+		}
+		
+		function reserving(){
+			var i1;
+			var i2;
+			var i3;
+			for (i1=1; i1<=2324; i1 = i1 + 101){
+			    i2 = "s" + i1.valueOf();
+				i3 = "sa" + i1.valueOf();
+				if(document.getElementById(i2).innerHTML=="========="){
+					document.getElementById(i2).innerHTML="RESERVADO";
+				}
+				if(document.getElementById(i3).innerHTML=="========="){
+					document.getElementById(i3).innerHTML="RESERVADO";
+				}
+			}
+		}
+		
+		function canceling(){
+			var price_per_hour = 4;
+			var f = document.getElementById('price').innerHTML;
+			var price = parseInt(f);
+			var i1;
+			var i2;
+			var i3;
+			for (i1=1; i1<=2324; i1 = i1 + 101){
+			    i2 = "s" + i1.valueOf();
+				i3 = "sa" + i1.valueOf();
+				if(document.getElementById(i2).innerHTML=="========="){
+					document.getElementById(i2).innerHTML="";
+					price = price - price_per_hour;
+				}
+				if(document.getElementById(i3).innerHTML=="========="){
+					document.getElementById(i3).innerHTML="";
+					price = price - price_per_hour;
+				}
+			}
+			document.getElementById('price').innerHTML = price.valueOf();
+		}
+		
+		function selected2(id) {
+			var price_per_hour = 2;
+			var f = document.getElementById('price2').innerHTML;
+			var price = parseInt(f);
+			var e = document.getElementById(id);
+			if(e.innerHTML=="RESERVADO" || e.innerHTML=="EXPIRADO") {
+				toggleVisible('ImpossibleActionPopUp');
+			}
+			else if(e.innerHTML=="=========") {
+				e.innerHTML="";
+				price = price - price_per_hour;
+			}
+			else{
+				e.innerHTML="=========";
+				price = price + price_per_hour;
+			}
+			document.getElementById('price2').innerHTML = price.valueOf();
+		}
+		
+		function reserving2(){
+			var i1;
+			var i2;
+			var i3;
+			for (i1=1; i1<=2324; i1 = i1 + 101){
+			    i2 = "d" + i1.valueOf();
+				i3 = "da" + i1.valueOf();
+				if(document.getElementById(i2).innerHTML=="========="){
+					document.getElementById(i2).innerHTML="RESERVADO";
+				}
+				if(document.getElementById(i3).innerHTML=="========="){
+					document.getElementById(i3).innerHTML="RESERVADO";
+				}
+			}
+		}
+		
+		function canceling2(){
+			var price_per_hour = 2;
+			var f = document.getElementById('price2').innerHTML;
+			var price = parseInt(f);
+			var i1;
+			var i2;
+			var i3;
+			for (i1=1; i1<=2324; i1 = i1 + 101){
+			    i2 = "d" + i1.valueOf();
+				i3 = "da" + i1.valueOf();
+				if(document.getElementById(i2).innerHTML=="========="){
+					document.getElementById(i2).innerHTML="";
+					price = price - price_per_hour;	
+				}
+				if(document.getElementById(i3).innerHTML=="========="){
+					document.getElementById(i3).innerHTML="";
+					price = price - price_per_hour;
+				}
+			}
+			document.getElementById('price2').innerHTML = price.valueOf();
+		}
+		
+		function jogos() {
+			document.getElementById('MenuDeEntrada').style.display='none';
+			document.getElementById('MenuDeJogos').style.display='block';
+		}
+		
+		function pedirConsum() {
+			document.getElementById('MenuDeEntrada').style.display='none';
+			document.getElementById('fundoPedidos').style.display='block';
+		}
+		
+		function sairpedirConsum() {
+			document.getElementById('MenuDeEntrada').style.display='block';
+			document.getElementById('fundoPedidos').style.display='none';
+		}
+		
+		function music() {
+			document.getElementById('MenuDeEntrada').style.display='none';
+			document.getElementById('MusicSection').style.display='block';
+		}
+		
+		function voltajogos() {
+			document.getElementById('MenuDeEntrada').style.display='block';
+			document.getElementById('MenuDeJogos').style.display='none';
+		}
+		
+		function voltamusica() {
+			document.getElementById('MenuDeEntrada').style.display='block';
+			document.getElementById('MusicSection').style.display='none';
+		}
+		
+		function reservasnooker() {
+			document.getElementById('ReservaSnooker').style.display='block';
+			document.getElementById('MenuDeJogos').style.display='none';
+		}
+		
+		function cancelasnooker() {
+			document.getElementById('ReservaSnooker').style.display='none';
+			document.getElementById('MenuDeJogos').style.display='block';
+		}
+		
+		function concluisnooker() {
+			document.getElementById('ReservaSnooker').style.display='none';
+			document.getElementById('MenuDeEntrada').style.display='block';
+		}
+		
+		function reservadardos() {
+			document.getElementById('ReservaDardos').style.display='block';
+			document.getElementById('MenuDeJogos').style.display='none';
+		}
+		
+		function canceladardos() {
+			document.getElementById('ReservaDardos').style.display='none';
+			document.getElementById('MenuDeJogos').style.display='block';
+		}
+		
+		function concluidardos() {
+			document.getElementById('ReservaDardos').style.display='none';
+			document.getElementById('MenuDeEntrada').style.display='block';
+		}
+		
+		function confirmFunction(opcion) {
+			toggleVisible('PedidoConcluidoPopUp');
+			if(opcion=="snooker") {
+				reserving(); 
+				concluisnooker();
+			}
+			else if(opcion=='pedirConsum') {
+				//gravar na conta
+				limpaPedido();
+				sairpedirConsum();
+			}
+			else{
+				reserving2();
+				concluidardos();
+			}
+		}
+		
+		function offreserve(){
+			var i1;
+			var i2;
+			var i3 = nhour.valueOf() - 1;
+			var i4 = i3*100 + nhour.valueOf();
+			//var i5 = nhour.valueOf() + 1;
+			//var i6 = nhour.valueOf() + i5*100;
+			//var i7 = "s" + i6;
+			for (i1=1; i1<=i4; i1 = i1 + 101){
+				i2 = "s" + i1;
+				if(document.getElementById(i2).innerHTML=="=========") selected(i2);
+				document.getElementById(i2).innerHTML="EXPIRADO";
+			}
+			for (i1=1; i1<=i4; i1 = i1 + 101){
+				i2 = "d" + i1;
+				if(document.getElementById(i2).innerHTML=="=========") selected2(i2);
+				document.getElementById(i2).innerHTML="EXPIRADO";
+			}
+			//if(document.getElementById(i7).innerHTML=="RESERVADO") alert("Your turn to play");
+			//i7 = "d" + i6;
+			//if(document.getElementById(i7).innerHTML=="RESERVADO") alert("Your turn to play");
+		}
+		
+		function changetable(id1, id2) {
+			var e1 = document.getElementById(id1);
+			var e2 = document.getElementById(id2);
+			e1.style.opacity=1;
+			e2.style.opacity=0.5;
+		}
+		
+		function cleanDay() {
+			var i1;
+			var i2;
+			var i3;
+			var i4;
+			var i5;
+			var e1;
+			var e2;
+			var e3;
+			var e4;
+			for (i1=1; i1<=2324; i1 = i1 + 101){
+				i2 = "s" + i1;
+				i3 = "sa" + i1;
+				i4 = "d" + i1;
+				i5 = "da" + i1;
+				e1 = document.getElementById(i2);
+				e2 = document.getElementById(i3);
+				e3 = document.getElementById(i4);
+				e4 = document.getElementById(i5);
+				e1.innerHTML=e2.innerHTML;
+				e2.innerHTML="";
+				e3.innerHTML=e4.innerHTML;
+				e4.innerHTML="";
+			}
+		}
+		
+		function mostraMusicas() {
+			document.getElementById('menuMusica').style.display='block';
+			document.getElementById('menuGenero').style.display='none';
+			document.getElementById('botaomusicas').style.background="rgb(142, 141, 141)";
+			document.getElementById("botaomusicas").style.borderColor="black";
+			document.getElementById("botaogeneros").style.borderColor="#A90154";
+			document.getElementById("botaogeneros").style.opacity="0.8";
+			document.getElementById("botaomusicas").style.opacity="1";
+		}
+		
+		function mostraGenero() {
+			document.getElementById('menuMusica').style.display='none';
+			document.getElementById('menuGenero').style.display='block';
+			document.getElementById('botaogeneros').style.background='rgb(142, 141, 141)';
+			document.getElementById("botaogeneros").style.borderColor="black";
+			document.getElementById("botaomusicas").style.borderColor="#A90154";
+			document.getElementById("botaomusicas").style.opacity="0.8";
+			document.getElementById("botaogeneros").style.opacity="1";
+		}
+		
+		
+var hipotesedepedido = ['refrigerante','compal','sumonatural','aguapedras','agua','cervejasemalcool','cafe','capuccino','redbull','amendoins','tremocos','batatasfritas','pipocas','nachos','tostamista','tostadefrango','tostadedeliciasdomar','cerveja','sangria','somersby','whiskey','gin','mojito','martini','tequila','vodka','rum','champanhe'];
+var quantidadesdepedido = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var precodepedido = [2.00,3.00,2.00,2.00,1.00,1.50,0.50,3.00,4.00,1.00,1.00,2.00,2.00,4.00,3.50,5.00,5.00,1.50,2.00,4.00,4.00,6.00,4.00,5.00,1.00,3.00,4.00,6.00];
+
+	function selecionamenubebidasnaoalcoolicas() {
+		document.getElementById('caixacomopcoesaperitivos').style.display='none';
+		document.getElementById('caixacomopcoestostas').style.display='none';
+		document.getElementById('caixacomopcoesbebidas').style.display='block';
+		document.getElementById('caixacomopcoesbebidasalcool').style.display='none';
+		document.getElementById('bebidas').style.background='#cc7a00';
+		document.getElementById('tostas').style.background='';
+		document.getElementById('aperitivos').style.background='';
+		document.getElementById('bebidasalc').style.background='';
+	}
+	function selecionamenubebidasalcoolicas() {
+		document.getElementById('caixacomopcoesaperitivos').style.display='none';
+		document.getElementById('caixacomopcoestostas').style.display='none';
+		document.getElementById('caixacomopcoesbebidasalcool').style.display='block';
+		document.getElementById('caixacomopcoesbebidas').style.display='none';
+		document.getElementById('bebidasalc').style.background='#cc7a00';
+		document.getElementById('tostas').style.background='';
+		document.getElementById('aperitivos').style.background='';
+		document.getElementById('bebidas').style.background='';
+	}
+	function selecionamenuaperitivos() {
+		document.getElementById('caixacomopcoesaperitivos').style.display='block';
+		document.getElementById('caixacomopcoestostas').style.display='none';
+		document.getElementById('caixacomopcoesbebidas').style.display='none';
+		document.getElementById('caixacomopcoesbebidasalcool').style.display='none';
+		document.getElementById('aperitivos').style.background='#cc7a00';
+		document.getElementById('bebidas').style.background='';
+		document.getElementById('tostas').style.background='';
+		document.getElementById('bebidasalc').style.background='';
+
+	}
+	function selecionamenutostas() {
+		document.getElementById('caixacomopcoesaperitivos').style.display='none';
+		document.getElementById('caixacomopcoestostas').style.display='block';
+		document.getElementById('caixacomopcoesbebidas').style.display='none';
+		document.getElementById('caixacomopcoesbebidasalcool').style.display='none';
+		document.getElementById('tostas').style.background='#cc7a00';
+		document.getElementById('bebidas').style.background='';
+		document.getElementById('aperitivos').style.background='';
+		document.getElementById('bebidasalc').style.background='';
+
+	}
+	
+	function makeVisible(id){
+		var e = document.getElementById(id);
+		e.style.display = 'block';
+	}
+	
+	function makeUnvisible(id){
+		var e = document.getElementById(id);
+		e.style.display = 'none';
+	}
+	
+	function seleccionaConsumivel(id, name){
+		var i2 = hipotesedepedido.indexOf(id);
+		var i3 = quantidadesdepedido[i2];
+		var f = document.getElementById('totalconsumprice').innerHTML;
+		var i4 = parseFloat(f);
+		var id2 = id + "quant";
+		if(i3==0){
+			document.getElementById("tabelapedido").innerHTML += "<tr id='" + id + "'><td ><img class=\"simbolosmaismenos\" src=\"trash.png\" onclick=\"deleteConsumivel('" + id + "')\"/></td><td id ='tabelanome' class=\"nomehistorico\">" + name + "</td><td><img class=\"simbolosmaismenos\" src=\"minum.png\" onclick=\"diminuiConsumivel('" + id + "')\" /> </td><td class=\"nomehistorico\">x<span id='" + id2 + "'>1</span></td><td><img class=\"simbolosmaismenos\" src=\"plus.png\" onclick=\"seleccionaConsumivel('" + id + "','" + name + "')\" /></td></tr>";
+		}
+		quantidadesdepedido[i2] = ++i3;
+		document.getElementById(id2).innerHTML = i3;
+		document.getElementById("totalconsumprice").innerHTML = (i4 + precodepedido[i2]).toFixed(2).valueOf();
+	}
+	
+	function diminuiConsumivel(id) {
+		var i2 = hipotesedepedido.indexOf(id);
+		var i3 = quantidadesdepedido[i2];
+		var f = document.getElementById('totalconsumprice').innerHTML;
+		var i4 = parseFloat(f);
+		var id2 = id + "quant";
+		quantidadesdepedido[i2] = --i3;
+		document.getElementById(id2).innerHTML = i3;
+		document.getElementById("totalconsumprice").innerHTML = (i4 - precodepedido[i2]).toFixed(2).valueOf();
+		if(i3==0){
+			$('#'+id).remove();
+		}
+	}
+	
+	function deleteConsumivel(id) {
+		var i2 = hipotesedepedido.indexOf(id);
+		var i3 = quantidadesdepedido[i2];
+		var f = document.getElementById('totalconsumprice').innerHTML;
+		var i4 = parseFloat(f);
+		var id2 = id + "quant";
+		$('#'+id).remove();
+		document.getElementById("totalconsumprice").innerHTML = (i4 - i3*precodepedido[i2]).toFixed(2).valueOf();
+		i3 = 0;
+		quantidadesdepedido[i2] = i3;
+		document.getElementById(id2).innerHTML = i3;
+	}
+	
+	function limpaPedido() {
+		quantidadesdepedido = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		document.getElementById("totalconsumprice").innerHTML = (0).toFixed(2);
+		document.getElementById("tabelapedido").innerHTML = "";
+	}
+		
+	</script>
+	<link rel="stylesheet" href="stylemenu.css">	
+</head>
+<!--onload faz com que semrpe q abras o site o relogio comeca-->
+<body onload="startTime();">
+	
+<div class="EVERYTHING">
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+	
+	<div id="ImpossibleActionPopUp" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p style="padding-top:4%" align="center">&#9888; Opera&ccedil;&atilde;o Imposs&iacute;vel</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('ImpossibleActionPopUp');">OK</button>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div id="IndispFunctionalityPopUp" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p style="padding-top:4%" align="center">Funcionalidade Indispon&iacute;vel</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('IndispFunctionalityPopUp');">OK</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="PedidoConcluidoPopUp" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p style="padding-top:4%" align="center">Pedido conclu&iacute;do com sucesso &#10004;</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('PedidoConcluidoPopUp');">OK</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="HelpPopUp" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p style="padding-top:2%" align="center">De momento as &uacute;nicas sec&ccedil;&otilde;es dispon&iacute;veis s&atilde;o os Jogos e a M&uacute;sica! Pedimos desculpa pelo inc&oacute;modo que possa causar.</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('HelpPopUp');">OK</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="EmpregadoPopUp" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p style="padding-top:2%" align="center">Um empregado foi chamado. Chegar&aacute; &agrave; sua mesa o mais depressa poss&iacute;vel!</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('EmpregadoPopUp');">OK</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="AreYouSurePopUpS" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p style="padding-top:4%" align="center">Tem a certeza que deseja fazer reserva das seguintes horas para jogar snooker?</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('AreYouSurePopUpS'); confirmFunction('snooker');">Prosseguir</button>
+				<button class="buttons2" style="Margin-left:2%" type="button" onclick="toggleVisible('AreYouSurePopUpS');">Cancelar</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="AreYouSurePopUpD" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p align="center">Tem a certeza que deseja fazer reserva das seguintes horas para jogar dardos?</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('AreYouSurePopUpD'); confirmFunction('dardos');">Prosseguir</button>
+				<button class="buttons2" style="Margin-left:2%" type="button" onclick="toggleVisible('AreYouSurePopUpD');">Cancelar</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="AreYouSurePopUpConsum" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p align="center">Tem a certeza que deseja confirmar o pedido?</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('AreYouSurePopUpConsum'); confirmFunction('pedirConsum');">Prosseguir</button>
+				<button class="buttons2" style="Margin-left:2%" type="button" onclick="toggleVisible('AreYouSurePopUpConsum');">Cancelar</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="AreYouSurePopUpCancelPedido" class="PopUp">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<p align="center">Tem a certeza que deseja cancelar o pedido?</p>
+				<button class="buttons2" type="button" onclick="toggleVisible('AreYouSurePopUpCancelPedido'); limpaPedido(); sairpedirConsum();">Prosseguir</button>
+				<button class="buttons2" style="Margin-left:2%" type="button" onclick="toggleVisible('AreYouSurePopUpCancelPedido');">Cancelar</button>
+			</div>
+		</div>
+	</div>
+	
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->	
+	
+	<div id="MenuDeEntrada">
+		<div class="caixas" id="CONTA" onclick="toggleVisible('IndispFunctionalityPopUp');">	
+			<img id="contas" src = "conta.png" />
+		</div>
+		
+		<div class="caixas" id="MUSICA" onclick="music();">	
+			<p id="time1"></p>
+			<img id="musicas" src = "musica.png" />
+		</div>
+			
+		<div class="caixas" onclick="toggleVisible('EmpregadoPopUp');" id="CHAMAR">	
+			<img id="chamarr" src = "chamar.png" />
+		</div>
+			
+		<div class="caixas" id="JOGOS" onclick="jogos()">
+			<img id="jogoss" src = "jogos.png" />
+		</div>
+					
+		<div id="circulo" onclick="pedirConsum()">
+			<img id="menu" src = "menu.png" />
+		</div>
+		<div onclick="ajuda()" id="ajuda"> 
+			<img id="ajudaImagem" src="ajuda.png" />
+		</div>
+		
+		<div id="UTILIZADOR" onclick="toggleVisible('IndispFunctionalityPopUp');">	
+			<img id="utilizadores" src="utilizador.png" />
+			<br>Utilizador
+		</div>
+	</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->	
+	
+	<div id="MenuDeJogos">
+		<div class="caixasjogos" id="dardos" onclick="reservadardos()">
+			<img id="imagemdardos" src = "dardos.png" />
+			<p class="letrajogos">Dardos</p>
+		</div>
+		
+		<div class="caixasjogos" id="snooker" onclick="reservasnooker()" >
+			<p id="time2"></p>
+			<img id="imagemsnooker" src = "snooker.png" />
+			<p class="letrajogos">Snooker</p>
+		</div>
+		
+		<div id="voltar"  onclick='voltajogos()'>
+			<img id="voltarimagem" src="voltar.png" />
+		</div>
+		
+		<div id="UTILIZADOR" onclick="toggleVisible('IndispFunctionalityPopUp');">	
+			<img id="utilizadores" src="utilizador.png" />
+			<br>Utilizador
+		</div>
+
+	</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->	
+	
+	<div id="ReservaSnooker">
+		<p id="time3"></p>
+		<div id="Esquerda" class="caixaslaterais">
+			<h1 id="title">Reservar Snooker: 4&euro;/h</h1>
+			<button class="buttons" id="s" type="button" onclick="makeVisible('horario'); makeUnvisible('horarioa'); changetable('s','sa');">Hoje</button>
+			<button class="buttons" id="sa" type="button" onclick="makeVisible('horarioa'); makeUnvisible('horario'); changetable('sa','s');">Amanh&atilde;</button>
+			<div id="horario">
+				<table id="tabela_horario">
+				  <tr onclick="selected('s1')" >
+					<th>00h-01h</th>
+					<th id="s1" ></th>
+				  </tr>
+				  <tr onclick="selected('s102')">
+					<th>01h-02h</th>
+					<th id="s102"></th>
+				  </tr>
+				  <tr onclick="selected('s203')">
+					<th>02h-03h</th>
+					<th id="s203"></th>
+				  </tr>
+				  <tr onclick="selected('s304')">
+					<th>03h-04h</th>
+					<th id="s304"></th>
+				  </tr>
+				  <tr onclick="selected('s405')">
+					<th>04h-05h</th>
+					<th id="s405"></th>
+				  </tr>
+				  <tr onclick="selected('s506')">
+					<th>05h-06h</th>
+					<th id="s506"></th>
+				  </tr>
+				  <tr onclick="selected('s607')">
+					<th>06h-07h</th>
+					<th id="s607"></th>
+				  </tr>
+				  <tr onclick="selected('s708')">
+					<th>07h-08h</th>
+					<th id="s708"></th>
+				  </tr>
+				  <tr onclick="selected('s809')">
+					<th>08h-09h</th>
+					<th id="s809"></th>
+				  </tr>
+				  <tr onclick="selected('s910')">
+					<th>09h-10h</th>
+					<th id="s910"></th>
+				  </tr>
+				  <tr onclick="selected('s1011')">
+					<th>10h-11h</th>
+					<th id="s1011"></th>
+				  </tr>
+				  <tr onclick="selected('s1112')">
+					<th>11h-12h</th>
+					<th id="s1112"></th>
+				  </tr>
+				  <tr onclick="selected('s1213')">
+					<th>12h-13h</th>
+					<th id="s1213"></th>
+				  </tr>
+				  <tr onclick="selected('s1314')">
+					<th>13h-14h</th>
+					<th id="s1314"></th>
+				  </tr>
+				  <tr onclick="selected('s1415')">
+					<th>14h-15h</th>
+					<th id="s1415"></th>
+				  </tr>
+				  <tr onclick="selected('s1516')">
+					<th>15h-16h</th>
+					<th id="s1516"></th>
+				  </tr>
+				  <tr onclick="selected('s1617')">
+					<th>16h-17h</th>
+					<th id="s1617"></th>
+				  </tr>
+				  <tr onclick="selected('s1718')">
+					<th>17h-18h</th>
+					<th id="s1718"></th>
+				  </tr>
+				  <tr onclick="selected('s1819')">
+					<th>18h-19h</th>
+					<th id="s1819"></th>
+				  </tr>
+				  <tr onclick="selected('s1920')">
+					<th>19h-20h</th>
+					<th id="s1920"></th>
+				  </tr>
+				  <tr onclick="selected('s2021')">
+					<th>20h-21h</th>
+					<th id="s2021"></th>
+				  </tr>
+				  <tr onclick="selected('s2122')">
+					<th>21h-22h</th>
+					<th id="s2122"></th>
+				  </tr>
+				  <tr onclick="selected('s2223')">
+					<th>22h-23h</th>
+					<th id="s2223"></th>
+				  </tr>
+				  <tr onclick="selected('s2324')">
+					<th>23h-00h</th>
+					<th id="s2324"></th>
+				  </tr>
+				</table>
+			</div>
+			
+			<div id="horarioa">
+				<table id="tabela_horarioa">
+				  <tr onclick="selected('sa1')" >
+					<th>00h-01h</th>
+					<th id="sa1" ></th>
+				  </tr>
+				  <tr onclick="selected('sa102')">
+					<th>01h-02h</th>
+					<th id="sa102"></th>
+				  </tr>
+				  <tr onclick="selected('sa203')">
+					<th>02h-03h</th>
+					<th id="sa203"></th>
+				  </tr>
+				  <tr onclick="selected('sa304')">
+					<th>03h-04h</th>
+					<th id="sa304"></th>
+				  </tr>
+				  <tr onclick="selected('sa405')">
+					<th>04h-05h</th>
+					<th id="sa405"></th>
+				  </tr>
+				  <tr onclick="selected('sa506')">
+					<th>05h-06h</th>
+					<th id="sa506"></th>
+				  </tr>
+				  <tr onclick="selected('sa607')">
+					<th>06h-07h</th>
+					<th id="sa607"></th>
+				  </tr>
+				  <tr onclick="selected('sa708')">
+					<th>07h-08h</th>
+					<th id="sa708"></th>
+				  </tr>
+				  <tr onclick="selected('sa809')">
+					<th>08h-09h</th>
+					<th id="sa809"></th>
+				  </tr>
+				  <tr onclick="selected('sa910')">
+					<th>09h-10h</th>
+					<th id="sa910"></th>
+				  </tr>
+				  <tr onclick="selected('sa1011')">
+					<th>10h-11h</th>
+					<th id="sa1011"></th>
+				  </tr>
+				  <tr onclick="selected('sa1112')">
+					<th>11h-12h</th>
+					<th id="sa1112"></th>
+				  </tr>
+				  <tr onclick="selected('sa1213')">
+					<th>12h-13h</th>
+					<th id="sa1213"></th>
+				  </tr>
+				  <tr onclick="selected('sa1314')">
+					<th>13h-14h</th>
+					<th id="sa1314"></th>
+				  </tr>
+				  <tr onclick="selected('sa1415')">
+					<th>14h-15h</th>
+					<th id="sa1415"></th>
+				  </tr>
+				  <tr onclick="selected('sa1516')">
+					<th>15h-16h</th>
+					<th id="sa1516"></th>
+				  </tr>
+				  <tr onclick="selected('sa1617')">
+					<th>16h-17h</th>
+					<th id="sa1617"></th>
+				  </tr>
+				  <tr onclick="selected('sa1718')">
+					<th>17h-18h</th>
+					<th id="sa1718"></th>
+				  </tr>
+				  <tr onclick="selected('sa1819')">
+					<th>18h-19h</th>
+					<th id="sa1819"></th>
+				  </tr>
+				  <tr onclick="selected('sa1920')">
+					<th>19h-20h</th>
+					<th id="sa1920"></th>
+				  </tr>
+				  <tr onclick="selected('sa2021')">
+					<th>20h-21h</th>
+					<th id="sa2021"></th>
+				  </tr>
+				  <tr onclick="selected('sa2122')">
+					<th>21h-22h</th>
+					<th id="sa2122"></th>
+				  </tr>
+				  <tr onclick="selected('sa2223')">
+					<th>22h-23h</th>
+					<th id="sa2223"></th>
+				  </tr>
+				  <tr onclick="selected('sa2324')">
+					<th>23h-00h</th>
+					<th id="sa2324"></th>
+				  </tr>
+				</table>
+			</div>
+		</div>
+		
+		<div id="Direita" class="caixaslaterais">
+			<table id="tabela_horas">
+				<!--<tr>
+					<th>Das</th>
+					<th>At&eacute;</th>
+				</tr>
+				<tr>
+					<td>12h</td>
+					<td>14h</td>
+				</tr>-->
+				<tr>
+					<td colspan="2">Pre&ccedil;o Estimado</th>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="price">0</span>&euro;</th>
+				</tr>
+				<tr>
+					<td><button class="buttons" type="button" onclick="toggleVisible('AreYouSurePopUpS');">Reservar</button></td>
+					<td><button class="buttons" type="button" onclick="canceling(); cancelasnooker()">Cancelar</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->	
+	
+	<div id="ReservaDardos">
+		<p id="time4"></p>
+		<div id="Esquerda" class="caixaslaterais">
+			<h1 id="title">Reservar Dardos: 2&euro;/h</h1>
+			<button class="buttons2" id="d" type="button" onclick="makeVisible('horario2'); makeUnvisible('horario2a'); changetable('d','da');">Hoje</button>
+			<button class="buttons2" id="da" type="button" onclick="makeVisible('horario2a'); makeUnvisible('horario2'); changetable('da','d');">Amanh&atilde;</button>
+			<div id="horario2">
+				<table id="tabela_horario2">
+				  <tr onclick="selected2('d1')" >
+					<th>00h-01h</th>
+					<th id="d1" colspan="2" ></th>
+				  </tr>
+				  <tr onclick="selected2('d102')">
+					<th>01h-02h</th>
+					<th id="d102"colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d203')">
+					<th>02h-03h</th>
+					<th id="d203" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d304')">
+					<th>03h-04h</th>
+					<th id="d304" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d405')">
+					<th>04h-05h</th>
+					<th id="d405" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d506')">
+					<th>05h-06h</th>
+					<th id="d506" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d607')">
+					<th>06h-07h</th>
+					<th id="d607" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d708')">
+					<th>07h-08h</th>
+					<th id="d708" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d809')">
+					<th>08h-09h</th>
+					<th id="d809" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d910')">
+					<th>09h-10h</th>
+					<th id="d910" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1011')">
+					<th>10h-11h</th>
+					<th id="d1011" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1112')">
+					<th>11h-12h</th>
+					<th id="d1112" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1213')">
+					<th>12h-13h</th>
+					<th id="d1213" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1314')">
+					<th>13h-14h</th>
+					<th id="d1314" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1415')">
+					<th>14h-15h</th>
+					<th id="d1415" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1516')">
+					<th>15h-16h</th>
+					<th id="d1516" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1617')">
+					<th>16h-17h</th>
+					<th id="d1617" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1718')">
+					<th>17h-18h</th>
+					<th id="d1718" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1819')">
+					<th>18h-19h</th>
+					<th id="d1819" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d1920')">
+					<th>19h-20h</th>
+					<th id="d1920" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d2021')">
+					<th>20h-21h</th>
+					<th id="d2021" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d2122')">
+					<th>21h-22h</th>
+					<th id="d2122" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d2223')">
+					<th>22h-23h</th>
+					<th id="d2223" colspan="2"></th>
+				  </tr>
+				  <tr onclick="selected2('d2324')">
+					<th>23h-00h</th>
+					<th id="d2324" colspan="2"></th>
+				  </tr>
+				</table>
+			</div>
+			<div id="horario2a">
+				<table id="tabela_horario2a">
+				  <tr onclick="selected2('da1')" >
+					<th>00h-01h</th>
+					<th id="da1" ></th>
+				  </tr>
+				  <tr onclick="selected2('da102')">
+					<th>01h-02h</th>
+					<th id="da102"></th>
+				  </tr>
+				  <tr onclick="selected2('da203')">
+					<th>02h-03h</th>
+					<th id="da203"></th>
+				  </tr>
+				  <tr onclick="selected2('da304')">
+					<th>03h-04h</th>
+					<th id="da304"></th>
+				  </tr>
+				  <tr onclick="selected2('da405')">
+					<th>04h-05h</th>
+					<th id="da405"></th>
+				  </tr>
+				  <tr onclick="selected2('da506')">
+					<th>05h-06h</th>
+					<th id="da506"></th>
+				  </tr>
+				  <tr onclick="selected2('da607')">
+					<th>06h-07h</th>
+					<th id="da607"></th>
+				  </tr>
+				  <tr onclick="selected2('da708')">
+					<th>07h-08h</th>
+					<th id="da708"></th>
+				  </tr>
+				  <tr onclick="selected2('da809')">
+					<th>08h-09h</th>
+					<th id="da809"></th>
+				  </tr>
+				  <tr onclick="selected2('da910')">
+					<th>09h-10h</th>
+					<th id="da910"></th>
+				  </tr>
+				  <tr onclick="selected2('da1011')">
+					<th>10h-11h</th>
+					<th id="da1011"></th>
+				  </tr>
+				  <tr onclick="selected2('da1112')">
+					<th>11h-12h</th>
+					<th id="da1112"></th>
+				  </tr>
+				  <tr onclick="selected2('da1213')">
+					<th>12h-13h</th>
+					<th id="da1213"></th>
+				  </tr>
+				  <tr onclick="selected2('da1314')">
+					<th>13h-14h</th>
+					<th id="da1314"></th>
+				  </tr>
+				  <tr onclick="selected2('da1415')">
+					<th>14h-15h</th>
+					<th id="da1415"></th>
+				  </tr>
+				  <tr onclick="selected2('da1516')">
+					<th>15h-16h</th>
+					<th id="da1516"></th>
+				  </tr>
+				  <tr onclick="selected2('da1617')">
+					<th>16h-17h</th>
+					<th id="da1617"></th>
+				  </tr>
+				  <tr onclick="selected2('da1718')">
+					<th>17h-18h</th>
+					<th id="da1718"></th>
+				  </tr>
+				  <tr onclick="selected2('da1819')">
+					<th>18h-19h</th>
+					<th id="da1819"></th>
+				  </tr>
+				  <tr onclick="selected2('da1920')">
+					<th>19h-20h</th>
+					<th id="da1920"></th>
+				  </tr>
+				  <tr onclick="selected2('da2021')">
+					<th>20h-21h</th>
+					<th id="da2021"></th>
+				  </tr>
+				  <tr onclick="selected2('da2122')">
+					<th>21h-22h</th>
+					<th id="da2122"></th>
+				  </tr>
+				  <tr onclick="selected2('da2223')">
+					<th>22h-23h</th>
+					<th id="da2223"></th>
+				  </tr>
+				  <tr onclick="selected2('da2324')">
+					<th>23h-00h</th>
+					<th id="da2324"></th>
+				  </tr>
+				</table>
+			</div>
+		</div>
+		
+		<div id="Direita" class="caixaslaterais">			
+			<table id="tabela_horas2">
+				<!--<tr>
+					<th>Das</th>
+					<th>At&eacute;</th>
+				</tr>
+				<tr>
+					<td>12h</td>
+					<td>14h</td>
+				</tr>-->
+				<tr>
+					<td colspan="2">Pre&ccedil;o Estimado</th>
+				</tr>
+				<tr>
+					<td colspan="2"><span id="price2">0</span>&euro;</th>
+				</tr>
+				<tr>
+					<td><button class="buttons2" type="button" onclick="toggleVisible('AreYouSurePopUpD');">Reservar</button></td>
+					<td><button class="buttons2" type="button" onclick="canceling2(); canceladardos()">Cancelar</button></td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+	
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+	<div id="MusicSection">
+		<div id="UTILIZADOR" onclick="toggleVisible('IndispFunctionalityPopUp');">	
+			<img id="utilizadores" src="utilizador.png" />
+			<br>Utilizador
+		</div>
+		<div id="voltar2"  onclick='voltamusica()'>
+			<img id="voltarimagem" src="voltar.png" />
+		</div>
+		<p id="time5"></p>
+		<div class="MenuDeMusicas">
+		</div>
+		<div id="reprodutor">
+			<div id="playermusica">
+				<h1>A tocar: <em id="aTocar">Layla </em><em id="artista"> - Eric Clapton</em></h1>
+			</div>
+			<div id="player">
+				<audio id="Jukebox" controls autoplay>
+					<source id="MusicPlayer" src="http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/EricClapton-Layla.mp3" type="audio/mp3">
+				Your browser does not support the audio element.
+				</audio>
+			</div>
+		</div>
+		
+		<div class="caixasmenuMusicas" id="menuMusica">
+			<table id="MusicTable">
+				<tr class="MusicBox" id="aintnobody" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/FelixJaehn&JasmineThompson-AintNobody.mp3', 'Ain\'t Nobody', 'Felix Jaehn & Jasmine Thompson', 'aintnobodyimg'); mudaEqAint();">
+					<td><img class="jukebutton" id="aintnobodyimg" src="buttonoff.png" /></td>
+					<td>Felix Jaehn &amp; Jasmine Thompson<br><span class="MusicName">Ain't Nobody</span><br>Eletr&oacute;nica</td>
+					<!-- <td><img class="gif" id="aintnobodygif" src="equalizer2.gif"></td> -->
+				</tr>
+				<tr class="MusicBox" id="valete" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Valete-Canal115.mp3', 'Canal 115', 'Valete', 'valeteimg')">
+					<td><img class="jukebutton" id="valeteimg" src="buttonoff.png" /></td>
+					<td>Valete<br><span class="MusicName">Canal 115</span><br>Rap</td>
+				</tr>
+				<tr class="MusicBox" id="sia" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Sia-Chandelier.mp3', 'Chandelier', 'Sia', 'siaimg')">
+					<td><img class="jukebutton" id="siaimg" src="buttonoff.png" /></td>
+					<td>Sia<br><span class="MusicName">Chandelier</span><br>Pop</td>
+				</tr>
+				<tr class="MusicBox" id="chopsuey" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/SystemOfADown-ChopSuey.mp3', 'Chop Suey', 'System Of A Down', 'chopsueyimg')">
+					<td><img class="jukebutton" id="chopsueyimg" src="buttonoff.png" /></td>
+					<td>System Of A Down<br><span class="MusicName">Chop Suey</span><br>Metal</td>
+				</tr>
+				<tr class="MusicBox" id="buble" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/MichaelBuble-CryMeARiver.mp3', 'Cry Me A River', 'Michael Bubl&eacute;', 'bubleimg')">
+					<td><img class="jukebutton" id="bubleimg" src="buttonoff.png" /></td>
+					<td>Michael Bubl&eacute;<br><span class="MusicName">Cry Me A River</span><br>Jazz</td>
+				</tr>
+				<tr class="MusicBox" id="articmonkeys" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/ArticMonkeys-DoIWannaKnow.mp3', 'Do I Wanna Know', 'Artic Monkeys', 'articmonkeysimg')">
+					<td><img class="jukebutton" id="articmonkeysimg" src="buttonoff.png" /></td>
+					<td>Artic Monkeys<br><span class="MusicName">Do I Wanna Know</span><br>Rock</td>
+				</tr>
+				<tr class="MusicBox" id="metallica" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Metallica-EnterSandman.mp3', 'Enter Sandman', 'Metallica', 'metallicaimg')">
+					<td><img class="jukebutton" id="metallicaimg" src="buttonoff.png" /></td>
+					<td>Metallica<br><span class="MusicName">Enter Sandman</span><br>Metal</td>
+				</tr>
+				<tr class="MusicBox" id="fireworks" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/KatyPerry-Fireworks.mp3', 'Fireworks', 'Katy Perry', 'fireworksimg')">
+					<td><img class="jukebutton" id="fireworksimg" src="buttonoff.png" /></td>
+					<td>Katy Perry<br><span class="MusicName">Fireworks</span><br>Pop</td>
+				</tr>
+				<tr class="MusicBox" id="beethoven" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Beethoven-FurElise.mp3', 'F&uuml;r Elise', 'Beethoven', 'beethovenimg')">
+					<td><img class="jukebutton" id="beethovenimg" src="buttonoff.png" /></td>
+					<td>Beethoven<br><span class="MusicName">F&uuml;r Elise</span><br>Cl&aacute;ssica</td>
+				</tr>
+				<tr class="MusicBox" id="howdeepisyourlove" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/CalvinHarris&Disciples-HowDeepIsYourLove.mp3', 'How Deep Is Your Love', 'Calvin Harris & Disciples', 'howdeepisyourloveimg')">
+					<td><img class="jukebutton" id="howdeepisyourloveimg" src="buttonoff.png" /></td>
+					<td>Calvin Harris &amp; Disciples<br><span class="MusicName">How Deep Is Your Love</span><br>Eletr&oacute;nica</td>
+				</tr>
+				<tr class="MusicBox" id="sum41" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Sum41-InTooDeep.mp3', 'In Too Deep', 'Sum41', 'sum41img')">
+					<td><img class="jukebutton" id="sum41img" src="buttonoff.png" /></td>
+					<td>Sum41<br><span class="MusicName">In Too Deep</span><br>Rock</td>
+				</tr>
+				<tr class="MusicBox" id="raycharles" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/RayCharles-IVeGotAWoman.mp3', 'I\'ve Got A Woman', 'Ray Charles', 'raycharlesimg')">
+					<td><img class="jukebutton" id="raycharlesimg" src="buttonoff.png" /></td>
+					<td>Ray Charles<br><span class="MusicName">I've Got A Woman</span><br>Jazz</td>
+				</tr>
+				<tr class="MusicBox" id="layla" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/EricClapton-Layla.mp3', 'Layla', 'Eric Clapton', 'laylaimg')">
+					<td><img class="jukebutton" id="laylaimg" src="buttonplaying.png" /></td>
+					<td>Eric Clapton<br><span class="MusicName">Layla</span><br>Blues</td>
+				</tr>
+				<tr class="MusicBox" id="slipknot" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Slipknot-Psychosocial.mp3', 'Psychosocial', 'Slipknot', 'slipknotimg')">
+					<td><img class="jukebutton" id="slipknotimg" src="buttonoff.png" /></td>
+					<td>Slipknot<br><span class="MusicName">Psychosocial</span><br>Metal</td>
+				</tr>
+				<tr class="MusicBox" id="mozart" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Mozart-Requiem.mp3', 'Requiem', 'Mozart', 'mozartimg')">
+					<td><img class="jukebutton" id="mozartimg" src="buttonoff.png" /></td>
+					<td>Mozart<br><span class="MusicName">Requiem</span><br>Cl&aacute;ssica</td>
+				</tr>
+				<tr class="MusicBox" id="bbking" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/B.B.King&EricClapton-RidingWithTheKing.mp3', 'Riding With The King', 'B.B.King & Eric Clapton', 'bbkingimg')">
+					<td><img class="jukebutton" id="bbkingimg" src="buttonoff.png" /></td>
+					<td>B.B.King &amp; Eric Clapton<br><span class="MusicName">Riding With The King</span><br>Blues</td>
+				</tr>
+				<tr class="MusicBox" id="yiruma" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Yiruma-RiverFlowsInYou.mp3', 'River Flows In You', 'Yiruma', 'yirumaimg')">
+					<td><img class="jukebutton" id="yirumaimg" src="buttonoff.png" /></td>
+					<td>Yiruma<br><span class="MusicName">River Flows In You</span><br>Cl&aacute;ssica</td>
+				</tr>
+				<tr class="MusicBox" id="snoopdre" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/SnoopDoggFtDrDre-TheNextEpisode.mp3', 'The Next Episode', 'Snoop Dogg Feat. Dr. Dre', 'snoopdreimg')">
+					<td><img class="jukebutton" id="snoopdreimg" src="buttonoff.png" /></td>
+					<td>Snoop Dogg Feat. Dr. Dre<br><span class="MusicName">The Next Episode</span><br>Rap</td>
+				</tr>
+				<tr class="MusicBox" id="edsheeran" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/EdSheeran-ThinkingOutLoud.mp3', 'Thinking Out Loud', 'Ed Sheeran', 'edsheeranimg')">
+					<td><img class="jukebutton" id="edsheeranimg" src="buttonoff.png" /></td>
+					<td>Ed Sheeran<br><span class="MusicName">Thinking Out Loud</span><br>Pop</td>
+				</tr>
+				<tr class="MusicBox" id="waterfalls" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/LVNDSCAPE&HollandParkFeat.NicoSantos-Waterfalls.mp3', 'Waterfalls', 'LVNDSCAPE & Holland Park feat. NicoSantos', 'waterfallsimg')">
+					<td><img class="jukebutton" id="waterfallsimg" src="buttonoff.png" /></td>
+					<td>LVNDSCAPE &amp; HollandPark feat. NicoSantos<br><span class="MusicName">Waterfalls</span><br>Eletr&oacute;nica </td>
+				</tr>
+				<tr class="MusicBox" id="welcometothejungle" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/GunsN\'Roses-WelcomeToTheJungle.mp3', 'Welcome To The Jungle', 'Guns N\' Roses', 'welcometothejungleimg')">
+					<td><img class="jukebutton" id="welcometothejungleimg" src="buttonoff.png" /></td>
+					<td>Guns N' Roses<br><span class="MusicName">Welcome To The Jungle</span><br>Rock</td>
+				</tr>
+				<tr class="MusicBox" id="whatawonderfulworld" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/LouisArmstrong-WhatAWonderfulWorld.mp3', 'What a Wonderful World', 'Louis Armstrong', 'whatawonderfulworldimg')">
+					<td><img class="jukebutton" id="whatawonderfulworldimg" src="buttonoff.png" /></td>
+					<td>Louis Armstrong<br><span class="MusicName">What A Wonderful World</span><br>Pop</td>
+				</tr>
+				<tr class="MusicBox" id="eminem" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/Eminem-WithoutMe.mp3', 'Without Me', 'Eminem', 'eminemimg')">
+					<td><img class="jukebutton" id="eminemimg" src="buttonoff.png" /></td>
+					<td>Eminem<br><span class="MusicName">Without Me</span><br>Rap</td>
+				</tr>
+				<tr class="MusicBox" id="yardbirdsuite" onclick="selectMusic('http://web.tecnico.ulisboa.pt/~ist181115/Template1/BARISTA2/MUSIC/CharlieParker-SeptetYardbirdSuite.mp3', 'Yardbird Suite', 'Charlie Parker', 'yardbirdsuiteimg')">
+					<td><img class="jukebutton" id="yardbirdsuiteimg" src="buttonoff.png" /></td>
+					<td>Charlie Parker<br><span class="MusicName">Yardbird Suite</span><br>Jazz</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="caixasmenuMusicas" id="menuGenero">
+			<table id="GenderTable">
+				<tr class="MusicBox" id="indef"onclick="selectGender(indeftracks, 'indef')">
+					<td><img class="jukebutton" id="indefimg" src="buttonplaying.png" /></td>
+					<td><span class="MusicName" >Indiferenciado</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="blues" onclick="selectGender(bluestracks, 'blues')">
+					<td><img class="jukebutton" id="bluesimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Blues</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="classic" onclick="selectGender(classictracks, 'classic')">
+					<td><img class="jukebutton" id="classicimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Cl&aacute;ssica</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="eletronic" onclick="selectGender(eletronictracks,'eletronic')">
+					<td><img class="jukebutton" id="eletronicimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Eletr&oacute;nica</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="jazz" onclick="selectGender(jazztracks, 'jazz')">
+					<td><img class="jukebutton" id="jazzimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Jazz</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="metal" onclick="selectGender(metaltracks, 'metal')">
+					<td><img class="jukebutton" id="metalimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Metal</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="pop" onclick="selectGender(poptracks, 'pop')">
+					<td><img class="jukebutton" id="popimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Pop</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="rap" onclick="selectGender(raptracks, 'rap')">
+					<td><img class="jukebutton" id="rapimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Rap</span><br></td>
+				</tr>
+				<tr class="MusicBox" id="rock" onclick="selectGender(rocktracks, 'rock')">
+					<td><img class="jukebutton" id="rockimg" src="buttonoff.png" /></td>
+					<td><span class="MusicName">Rock</span><br></td>
+				</tr>
+				
+			</table>
+		</div>
+		<button class="botoesMenuMusica" id="botaomusicas" type="button" onclick="mostraMusicas();">M&uacute;sicas</button>
+
+		<button class="botoesMenuMusica" id="botaogeneros" type="button" onclick="mostraGenero();">G&eacute;neros</button>
+		
+	</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->	
+
+	<div id="fundoPedidos">
+		<p id="time6"></p>
+		<div id="voltar3"  onclick='sairpedirConsum()'>
+			<img id="voltarimagem" src="voltar.png" />
+		</div>
+		<div id="titlepedidos">Menu:</div>
+		<div id="caixasdospedidos">
+			<button class="buttonspedidos " id="bebidas" style="background-color:#cc7a00" type="button" onclick="selecionamenubebidasnaoalcoolicas();">Bebidas sem Alcool</button>
+			<button class="buttonspedidos " id="bebidasalc" type="button" onclick="selecionamenubebidasalcoolicas();">Bebidas com Alcool</button>
+			<button class="buttonspedidos " id="aperitivos" type="button" onclick="selecionamenuaperitivos();">Aperitivos</button>
+			<button class="buttonspedidos " id="tostas" type="button" onclick="selecionamenutostas();">Tostas</button>
+			
+			<table class="caixasdepedidos" id="caixacomopcoesbebidas">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('refrigerante', 'Refrigerante')" src="coca-cola1.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('compal', 'Compal')" src="compal.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('sumonatural', 'Sumo Natural')" src="sumonatural.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('aguapedras', 'Agua das Pedras')" src="aguapedras.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('agua', 'Agua')" src="agua.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('cervejasemalcool', 'Cerveja sem Alcool')" src="cervejasemalcool.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('cafe','Cafe')" src="cafe.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('capuccino','Cappuccino')" src="cappuccino.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('redbull','Redbull')" src="redbull.png" /></td>
+					</tr>
+			</table>
+			<table class="caixasdepedidos" id="caixacomopcoesbebidasalcool">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('cerveja','Cerveja')" src="cerveja.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('sangria', 'Sangria')" src="sangria.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('somersby','Somersby')" src="somers.png" /></td>
+						
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('whiskey', 'Whisky')" src="whisky.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('gin', 'Gin')" src="gin.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('mojito', 'Mojito')" src="mojito.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('martini', 'Martini')" src="martini.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tequila', 'Tequila')" src="shot.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('vodka', 'Vodka')" src="vodka.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('rum', 'Rum')" src="rum.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('champanhe', 'Champanhe')" src="champanhe.png" /></td>
+					</tr>
+			</table>
+			<table class="caixasdepedidos" id="caixacomopcoesaperitivos">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('amendoins', 'Amendoins')" src="amendoins.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tremocos', 'Tremocos')" src="tremocos.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('batatasfritas', 'Batatas Fritas')" src="batatas.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('pipocas', 'Pipocas')" src="pipocas.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('nachos', 'Nachos')" src="nachos.png" /></td>
+					</tr>
+			</table>
+			<table class="caixasdepedidos" id="caixacomopcoestostas">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tostamista', 'Tosta Mista')" src="mista.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tostadefrango', 'Tosta de Frango')" src="frango.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tostadedeliciasdomar', 'Tosta Delicias do Mar')" src="delicias.png" /></td>
+					</tr>
+			</table>
+			<div class="caixasdepedidos" id="caixadoteupedido">
+				<div class=titulodascaixas>
+					<span class="nomedascoisas">O seu Pedido:</span>
+				</div>
+				<div id="tabelapedido1">
+					<table id="tabelapedido">
+						
+					</table>
+				</div>
+				<div class="totalpedido">
+						<span class="nomebotoes">Total:</span><span class="nomebotoes" id="totalconsumprice">0.00</span>&euro;
+				</div>
+				<div id="caixaconfirmalimpapedido">
+					<div class="botaoconfirmalimpa" onclick="toggleVisible('AreYouSurePopUpCancelPedido');" id="botaolimpa">
+						<span class="nomebotoes">Cancelar Pedido</span>
+					</div>
+					<div class="botaoconfirmalimpa" onclick="toggleVisible('AreYouSurePopUpConsum');" id="botaoconfirma">
+						<span class="nomebotoes">Confirmar Pedido</span>
+					</div>	
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->	
+
+	<div id="fundoPedidos">
+		<p id="time6"></p>
+		<div id="voltar3"  onclick='sairpedirConsum()'>
+			<img id="voltarimagem" src="voltar.png" />
+		</div>
+		<div id="titlepedidos">Menu:</div>
+		<div id="caixasdospedidos">
+			<button class="buttonspedidos " id="bebidas" style="background-color:#cc7a00" type="button" onclick="selecionamenubebidasnaoalcoolicas();">Bebidas sem Alcool</button>
+			<button class="buttonspedidos " id="bebidasalc" type="button" onclick="selecionamenubebidasalcoolicas();">Bebidas com Alcool</button>
+			<button class="buttonspedidos " id="aperitivos" type="button" onclick="selecionamenuaperitivos();">Aperitivos</button>
+			<button class="buttonspedidos " id="tostas" type="button" onclick="selecionamenutostas();">Tostas</button>
+			
+			<table class="caixasdepedidos" id="caixacomopcoesbebidas">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('refrigerante', 'Refrigerante')" src="coca-cola1.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('compal', 'Compal')" src="compal.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('sumonatural', 'Sumo Natural')" src="sumonatural.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('aguapedras', 'Agua das Pedras')" src="aguapedras.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('agua', 'Agua')" src="agua.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('cervejasemalcool', 'Cerveja sem Alcool')" src="cervejasemalcool.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('cafe','Cafe')" src="cafe.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('capuccino','Cappuccino')" src="cappuccino.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('redbull','Redbull')" src="redbull.png" /></td>
+					</tr>
+			</table>
+			<table class="caixasdepedidos" id="caixacomopcoesbebidasalcool">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('cerveja','Cerveja')" src="cerveja.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('sangria', 'Sangria')" src="sangria.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('somersby','Somersby')" src="somers.png" /></td>
+						
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('whiskey', 'Whisky')" src="whisky.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('gin', 'Gin')" src="gin.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('mojito', 'Mojito')" src="mojito.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('martini', 'Martini')" src="martini.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tequila', 'Tequila')" src="shot.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('vodka', 'Vodka')" src="vodka.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('rum', 'Rum')" src="rum.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('champanhe', 'Champanhe')" src="champanhe.png" /></td>
+					</tr>
+			</table>
+			<table class="caixasdepedidos" id="caixacomopcoesaperitivos">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('amendoins', 'Amendoins')" src="amendoins.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tremocos', 'Tremocos')" src="tremocos.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('batatasfritas', 'Batatas Fritas')" src="batatas.png" /></td>
+					</tr>
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('pipocas', 'Pipocas')" src="pipocas.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('nachos', 'Nachos')" src="nachos.png" /></td>
+					</tr>
+			</table>
+			<table class="caixasdepedidos" id="caixacomopcoestostas">
+					<tr class="coisasdomenu1">
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tostamista', 'Tosta Mista')" src="mista.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tostadefrango', 'Tosta de Frango')" src="frango.png" /></td>
+						<td><img class="imagenscomida" onclick="seleccionaConsumivel('tostadedeliciasdomar', 'Tosta Delicias do Mar')" src="delicias.png" /></td>
+					</tr>
+			</table>
+			<div class="caixasdepedidos" id="caixadoteupedido">
+				<div class=titulodascaixas>
+					<span class="nomedascoisas">O seu Pedido:</span>
+				</div>
+				<div id="tabelapedido1">
+					<table id="tabelapedido">
+						
+					</table>
+				</div>
+				<div class="totalpedido">
+						<span class="nomebotoes">Total:</span><span class="nomebotoes" id="totalconsumprice">0.00</span>&euro;
+				</div>
+				<div id="caixaconfirmalimpapedido">
+					<div class="botaoconfirmalimpa" onclick="limpaPedido(); sairpedirConsum();" id="botaolimpa">
+						<span class="nomebotoes">Cancelar Pedido</span>
+					</div>
+					<div class="botaoconfirmalimpa" onclick="toggleVisible('AreYouSurePopUpConsum');" id="botaoconfirma">
+						<span class="nomebotoes">Confirmar Pedido</span>
+					</div>	
+				</div>
+			</div>
+			
+		</div>
+	
+	</div>
+	
+	<script type="text/javascript">
+		indeftracks=['articmonkeys', 'bbking', 'beethoven', 'howdeepisyourlove', 'yardbirdsuite', 'edsheeran', 'eminem', 'layla', 'aintnobody', 'welcometothejungle', 'fireworks', 'whatawonderfulworld', 'metallica', 'buble', 'mozart', 'raycharles', 'sia', 'slipknot', 'snoopdre', 'sum41', 'chopsuey', 'valete', 'yiruma', 'waterfalls'];
+		bluestracks=['bbking','yardbirdsuite', 'layla'];
+		classictracks=['beethoven', 'mozart', 'yiruma'];
+		eletronictracks=['howdeepisyourlove', 'aintnobody', 'waterfalls'];
+		jazztracks=['buble','whatawonderfulworld', 'raycharles'];
+		metaltracks=['metallica', 'slipknot', 'chopsuey'];
+		poptracks=['edsheeran', 'fireworks', 'sia'];
+		raptracks=['eminem', 'snoopdre', 'valete'];
+		rocktracks=['articmonkeys', 'welcometothejungle', 'sum41'];
+		var tracks = indeftracks;
+		var musicwaiting = ["","","",""];
+		var musicplaying = ['MUSIC/EricClapton-Layla.mp3', 'Layla', 'Eric Clapton', 'laylaimg'];
+		var imggenderplaying = "indefimg";
+		var genderplaying = "indef";
+		var juke = document.getElementById("Jukebox");
+		juke.onended = function() {
+			var random_nr = Math.floor(Math.random() * tracks.length);
+			var id;
+			if(musicwaiting[0]=="") { 
+				id = "#" + tracks[random_nr];
+				$(id).click();
+			}
+			id = "#" + musicwaiting[0];
+			changeMusic(musicwaiting[0],musicwaiting[1],musicwaiting[2],musicwaiting[3]);
+			musicwaiting=["","","",""];
+			document.getElementById(imggenderplaying).src="buttonplaying.png";
+		};
+		
+		
+		function changeMusic(source, music, artist, img) {
+			document.getElementById("MusicPlayer").src = source;
+			document.getElementById("Jukebox").load();
+			document.getElementById("aTocar").innerHTML = music;
+			document.getElementById("artista").innerHTML = " - " + artist;
+			document.getElementById(musicplaying[3]).src="buttonoff.png";
+			document.getElementById(img).src="buttonplaying.png";
+			musicplaying[0]=source;
+			musicplaying[1]=music;
+			musicplaying[2]=artist;
+			musicplaying[3]=img;
+		}
+		
+		function selectMusic(source,music,artist,img){
+			var e1 = document.getElementById(img);
+			if(img==musicwaiting[3]) {
+				musicwaiting = ["","","",""];
+				e1.src="buttonoff.png";
+				if(img==musicplaying[3]) e1.src="buttonplaying.png";
+			}
+			else {
+				if(musicwaiting[3]!="") document.getElementById(musicwaiting[3]).src="buttonoff.png";
+				e1.src="buttonwaiting.png";
+				musicwaiting[0]=source;
+				musicwaiting[1]=music;
+				musicwaiting[2]=artist;
+				musicwaiting[3]=img;
+			}
+		}
+		
+		function selectGender(trackid, id) {
+			var img = id + 'img';
+			var e1 = document.getElementById(img);
+			var e2 = document.getElementById(imggenderplaying);
+			if(trackid==tracks) {toggleVisible('ImpossibleActionPopUp');}
+			else {
+				e2.src="buttonoff.png";
+				tracks=trackid;
+				e1.src="buttonwaiting.png";
+				imggenderplaying=img;
+				genderplaying=id;
+			}
+		}
+	</script>
+</body>
+</html>

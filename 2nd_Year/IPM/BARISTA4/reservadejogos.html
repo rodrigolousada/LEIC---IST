@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		html, body {
+			position: fixed;
+			height:100%;
+			width:100%;
+			padding:0;
+			Marge:0; 
+			background:#4A7023;
+		}
+		
+		.caixas { position:fixed; width:50%; height:100% }
+		
+		#Esquerda {
+			padding-left:2%;
+			width:50%;
+			clear: left;
+		}
+		
+		#Direita {
+			width:50%;
+			left:50%;
+			padding:5%;
+		}
+		
+		#title {
+			font-size:300%
+		}
+		
+		#horario {
+			float:center;
+			width:90%;
+			overflow-y: auto;
+			height: 80%;
+			background:#458B00;
+			border: black solid;
+		}
+		
+		#tabela_horario{
+			border-collapse: collapse;
+			width:100%;
+		}
+		
+		#tabela_horario th, #tabela_horario td {
+			padding: 8px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		#tabela_horario tr:hover{background-color:#004F00}
+		
+		#tabela_horas{
+			font-size:400%;
+			border-collapse: collapse;
+			width:80%;
+			text-align: center;
+			margin-top:25%;
+		}
+		
+		.buttons {
+			font-size:20px;
+			color:white;
+			background-color:green;
+			border-color: black;
+		}
+	</style>
+	
+	<script>
+		
+		function selected(id) {
+			var price_per_hour = 4;
+			var f = document.getElementById('price').innerHTML;
+			var price = parseInt(f);
+			var e = document.getElementById(id);
+			if(e.innerHTML=="RESERVADO") {
+				alert('&#9888; Opera&ccedil;&atilde;o Impossivel');
+			}
+			else if(e.innerHTML=="SELECTED") {
+				e.innerHTML="";
+				price = price - price_per_hour;
+			}
+			else{
+				e.innerHTML="SELECTED";
+				price = price + price_per_hour;
+			}
+			document.getElementById('price').innerHTML = price.valueOf();
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="Esquerda" class="caixas">
+		<h1 id="title">Reservar:</h1>
+		
+		<div id="horario">
+			<table id="tabela_horario">
+			  <tr onclick="selected('0001')" >
+				<th>00h-01h</th>
+				<th id="0001" colspan="2" ></th>
+			  </tr>
+			  <tr onclick="selected('0102')">
+				<th>01h-02h</th>
+				<th id="0102"colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0203')">
+				<th>02h-03h</th>
+				<th id="0203" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0304')">
+				<th>03h-04h</th>
+				<th id="0304" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0405')">
+				<th>04h-05h</th>
+				<th id="0405" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0506')">
+				<th>05h-06h</th>
+				<th id="0506" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0607')">
+				<th>06h-07h</th>
+				<th id="0607" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0708')">
+				<th>07h-08h</th>
+				<th id="0708" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0809')">
+				<th>08h-09h</th>
+				<th id="0809" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('0910')">
+				<th>09h-10h</th>
+				<th id="0910" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1011')">
+				<th>10h-11h</th>
+				<th id="1011" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1112')">
+				<th>11h-12h</th>
+				<th id="1112" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1213')">
+				<th>12h-13h</th>
+				<th id="1213" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1314')">
+				<th>13h-14h</th>
+				<th id="1314" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1415')">
+				<th>14h-15h</th>
+				<th id="1415" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1516')">
+				<th>15h-16h</th>
+				<th id="1516" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1617')">
+				<th>16h-17h</th>
+				<th id="1617" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1718')">
+				<th>17h-18h</th>
+				<th id="1718" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1819')">
+				<th>18h-19h</th>
+				<th id="1819" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('1920')">
+				<th>19h-20h</th>
+				<th id="1920" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('2021')">
+				<th>20h-21h</th>
+				<th id="2021" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('2122')">
+				<th>21h-22h</th>
+				<th id="2122" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('2223')">
+				<th>22h-23h</th>
+				<th id="2223" colspan="2"></th>
+			  </tr>
+			  <tr onclick="selected('2300')">
+				<th>23h-00h</th>
+				<th id="2300" colspan="2"></th>
+			  </tr>
+			</table>
+		</div>
+	</div>
+	
+	<div id="Direita" class="caixas">
+		<table id="tabela_horas">
+			<!--<tr>
+				<th>Das</th>
+				<th>At&eacute;</th>
+			</tr>
+			<tr>
+				<td>12h</td>
+				<td>14h</td>
+			</tr>-->
+			<tr>
+				<td colspan="2">Pre&ccedil;o Estimado</th>
+			</tr>
+			<tr>
+				<td colspan="2"><span id="price">0</span>&euro;</th>
+			</tr>
+			<tr>
+				<td><button class="buttons" type="button" onclick="location.href='protFuncional1-beta.html'">Cancelar</button></td>
+				<td><button class="buttons" type="button" onclick="alert('Pedido conclu&iacute;do com sucesso &#10004;'); location.href='protFuncional1-beta.html';">Reservar</button></td>
+			</tr>
+		</table>
+	</div>
+	
+
+</body>
+</html>

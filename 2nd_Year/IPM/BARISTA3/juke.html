@@ -1,0 +1,273 @@
+<html>
+<head>
+<link rel="stylesheet" href="stylemenu.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+		
+		function mostraMusicas() {
+			document.getElementById('menuMusica').style.display='block';
+			document.getElementById('menuGenero').style.display='none';
+			document.getElementById('botaomusicas').style.background="#F3F6CB";
+			document.getElementById("botaomusicas").style.borderColor="#80CAA5";
+			document.getElementById("botaogeneros").style.borderColor="#E7466F";
+			document.getElementById("botaogeneros").style.opacity="0.8";
+			document.getElementById("botaomusicas").style.opacity="1";
+		}
+		
+		function mostraGenero() {
+			document.getElementById('menuMusica').style.display='none';
+			document.getElementById('menuGenero').style.display='block';
+			document.getElementById('botaogeneros').style.background='#F3F6CB';
+			document.getElementById("botaogeneros").style.borderColor="#80CAA5";
+			document.getElementById("botaomusicas").style.borderColor="#E7466F";
+			document.getElementById("botaomusicas").style.opacity="0.8";
+			document.getElementById("botaogeneros").style.opacity="1";
+		}
+		
+		
+</script>
+</head>
+<body style="background: #333333;">
+	<div id="MenuDeMusicas">
+		<img id="fundo" src = "juke.png" />
+	</div>
+	
+	<div id="playermusica">
+		<h1>A tocar: <em id="aTocar">Layla </em><em id="artista"> - Eric Clapton</em></h1>
+	</div>
+	
+	<div id="player">
+		<audio id="Jukebox" controls autoplay>
+		  <source id="MusicPlayer" src="MUSIC/EricClapton-Layla.mp3" type="audio/mp3">
+		Your browser does not support the audio element.
+		</audio>
+	</div>
+	
+	<div class="caixasmenuMusicas" id="menuMusica">
+		<table id="MusicTable">
+			<tr class="MusicBox" id="aintnobody" onclick="selectMusic('MUSIC/FelixJaehn&JasmineThompson-AintNobody.mp3', 'Ain\'t Nobody', 'Felix Jaehn & Jasmine Thompson', 'aintnobodyimg')">
+				<td><img class="jukebutton" id="aintnobodyimg" src="buttonoff.png" /></td>
+				<td>Felix Jaehn &amp; Jasmine Thompson<br><span class="MusicName">Ain't Nobody</span><br>Eletr&oacute;nica</td>
+			</tr>
+			<tr class="MusicBox" id="valete" onclick="selectMusic('MUSIC/Valete-Canal115.mp3', 'Canal 115', 'Valete', 'valeteimg')">
+				<td><img class="jukebutton" id="valeteimg" src="buttonoff.png" /></td>
+				<td>Valete<br><span class="MusicName">Canal 115</span><br>Rap</td>
+			</tr>
+			<tr class="MusicBox" id="sia" onclick="selectMusic('MUSIC/Sia-Chandelier.mp3', 'Chandelier', 'Sia', 'siaimg')">
+				<td><img class="jukebutton" id="siaimg" src="buttonoff.png" /></td>
+				<td>Sia<br><span class="MusicName">Chandelier</span><br>Pop</td>
+			</tr>
+			<tr class="MusicBox" id="chopsuey" onclick="selectMusic('MUSIC/SystemOfADown-ChopSuey.mp3', 'Chop Suey', 'System Of A Down', 'chopsueyimg')">
+				<td><img class="jukebutton" id="chopsueyimg" src="buttonoff.png" /></td>
+				<td>System Of A Down<br><span class="MusicName">Chop Suey</span><br>Metal</td>
+			</tr>
+			<tr class="MusicBox" id="buble" onclick="selectMusic('MUSIC/MichaelBuble-CryMeARiver.mp3', 'Cry Me A River', 'Michael Bubl&eacute;', 'bubleimg')">
+				<td><img class="jukebutton" id="bubleimg" src="buttonoff.png" /></td>
+				<td>Michael Bubl&eacute;<br><span class="MusicName">Cry Me A River</span><br>Jazz</td>
+			</tr>
+			<tr class="MusicBox" id="articmonkeys" onclick="selectMusic('MUSIC/ArticMonkeys-DoIWannaKnow.mp3', 'Do I Wanna Know', 'Artic Monkeys', 'articmonkeysimg')">
+				<td><img class="jukebutton" id="articmonkeysimg" src="buttonoff.png" /></td>
+				<td>Artic Monkeys<br><span class="MusicName">Do I Wanna Know</span><br>Rock</td>
+			</tr>
+			<tr class="MusicBox" id="metallica" onclick="selectMusic('MUSIC/Metallica-EnterSandman.mp3', 'Enter Sandman', 'Metallica', 'metallicaimg')">
+				<td><img class="jukebutton" id="metallicaimg" src="buttonoff.png" /></td>
+				<td>Metallica<br><span class="MusicName">Enter Sandman</span><br>Metal</td>
+			</tr>
+			<tr class="MusicBox" id="fireworks" onclick="selectMusic('MUSIC/KatyPerry-Fireworks.mp3', 'Fireworks', 'Katy Perry', 'fireworksimg')">
+				<td><img class="jukebutton" id="fireworksimg" src="buttonoff.png" /></td>
+				<td>Katy Perry<br><span class="MusicName">Fireworks</span><br>Pop</td>
+			</tr>
+			<tr class="MusicBox" id="beethoven" onclick="selectMusic('MUSIC/Beethoven-FurElise.mp3', 'F&uuml;r Elise', 'Beethoven', 'beethovenimg')">
+				<td><img class="jukebutton" id="beethovenimg" src="buttonoff.png" /></td>
+				<td>Beethoven<br><span class="MusicName">F&uuml;r Elise</span><br>Cl&aacute;ssica</td>
+			</tr>
+			<tr class="MusicBox" id="howdeepisyourlove" onclick="selectMusic('MUSIC/CalvinHarris&Disciples-HowDeepIsYourLove.mp3', 'How Deep Is Your Love', 'Calvin Harris & Disciples', 'howdeepisyourloveimg')">
+				<td><img class="jukebutton" id="howdeepisyourloveimg" src="buttonoff.png" /></td>
+				<td>Calvin Harris &amp; Disciples<br><span class="MusicName">How Deep Is Your Love</span><br>Eletr&oacute;nica</td>
+			</tr>
+			<tr class="MusicBox" id="sum41" onclick="selectMusic('MUSIC/Sum41-InTooDeep.mp3', 'In Too Deep', 'Sum41', 'sum41img')">
+				<td><img class="jukebutton" id="sum41img" src="buttonoff.png" /></td>
+				<td>Sum41<br><span class="MusicName">In Too Deep</span><br>Rock</td>
+			</tr>
+			<tr class="MusicBox" id="raycharles" onclick="selectMusic('MUSIC/RayCharles-IVeGotAWoman.mp3', 'I\'ve Got A Woman', 'Ray Charles', 'raycharlesimg')">
+				<td><img class="jukebutton" id="raycharlesimg" src="buttonoff.png" /></td>
+				<td>Ray Charles<br><span class="MusicName">I've Got A Woman</span><br>Jazz</td>
+			</tr>
+			<tr class="MusicBox" id="layla" onclick="selectMusic('MUSIC/EricClapton-Layla.mp3', 'Layla', 'Eric Clapton', 'laylaimg')">
+				<td><img class="jukebutton" id="laylaimg" src="buttonplaying.png" /></td>
+				<td>Eric Clapton<br><span class="MusicName">Layla</span><br>Blues</td>
+			</tr>
+			<tr class="MusicBox" id="slipknot" onclick="selectMusic('MUSIC/Slipknot-Psychosocial.mp3', 'Psychosocial', 'Slipknot', 'slipknotimg')">
+				<td><img class="jukebutton" id="slipknotimg" src="buttonoff.png" /></td>
+				<td>Slipknot<br><span class="MusicName">Psychosocial</span><br>Metal</td>
+			</tr>
+			<tr class="MusicBox" id="mozart" onclick="selectMusic('MUSIC/Mozart-Requiem.mp3', 'Requiem', 'Mozart', 'mozartimg')">
+				<td><img class="jukebutton" id="mozartimg" src="buttonoff.png" /></td>
+				<td>Mozart<br><span class="MusicName">Requiem</span><br>Cl&aacute;ssica</td>
+			</tr>
+			<tr class="MusicBox" id="bbking" onclick="selectMusic('MUSIC/B.B.King&EricClapton-RidingWithTheKing.mp3', 'Riding With The King', 'B.B.King & Eric Clapton', 'bbkingimg')">
+				<td><img class="jukebutton" id="bbkingimg" src="buttonoff.png" /></td>
+				<td>B.B.King &amp; Eric Clapton<br><span class="MusicName">Riding With The King</span><br>Blues</td>
+			</tr>
+			<tr class="MusicBox" id="yiruma" onclick="selectMusic('MUSIC/Yiruma-RiverFlowsInYou.mp3', 'River Flows In You', 'Yiruma', 'yirumaimg')">
+				<td><img class="jukebutton" id="yirumaimg" src="buttonoff.png" /></td>
+				<td>Yiruma<br><span class="MusicName">River Flows In You</span><br>Cl&aacute;ssica</td>
+			</tr>
+			<tr class="MusicBox" id="snoopdre" onclick="selectMusic('MUSIC/SnoopDoggFtDrDre-TheNextEpisode.mp3', 'The Next Episode', 'Snoop Dogg Feat. Dr. Dre', 'snoopdreimg')">
+				<td><img class="jukebutton" id="snoopdreimg" src="buttonoff.png" /></td>
+				<td>Snoop Dogg Feat. Dr. Dre<br><span class="MusicName">The Next Episode</span><br>Rap</td>
+			</tr>
+			<tr class="MusicBox" id="edsheeran" onclick="selectMusic('MUSIC/EdSheeran-ThinkingOutLoud.mp3', 'Thinking Out Loud', 'Ed Sheeran', 'edsheeranimg')">
+				<td><img class="jukebutton" id="edsheeranimg" src="buttonoff.png" /></td>
+				<td>Ed Sheeran<br><span class="MusicName">Thinking Out Loud</span><br>Pop</td>
+			</tr>
+			<tr class="MusicBox" id="waterfalls" onclick="selectMusic('MUSIC/LVNDSCAPE&HollandParkFeat.NicoSantos-Waterfalls.mp3', 'Waterfalls', 'LVNDSCAPE & Holland Park feat. NicoSantos', 'waterfallsimg')">
+				<td><img class="jukebutton" id="waterfallsimg" src="buttonoff.png" /></td>
+				<td>LVNDSCAPE &amp; HollandPark feat. NicoSantos<br><span class="MusicName">Waterfalls</span><br>Eletr&oacute;nica</td>
+			</tr>
+			<tr class="MusicBox" id="welcometothejungle" onclick="selectMusic('MUSIC/GunsN\'Roses-WelcomeToTheJungle.mp3', 'Welcome To The Jungle', 'Guns N\' Roses', 'welcometothejungleimg')">
+				<td><img class="jukebutton" id="welcometothejungleimg" src="buttonoff.png" /></td>
+				<td>Guns N' Roses<br><span class="MusicName">Welcome To The Jungle</span><br>Rock</td>
+			</tr>
+			<tr class="MusicBox" id="whatawonderfulworld" onclick="selectMusic('MUSIC/LouisArmstrong-WhatAWonderfulWorld.mp3', 'What a Wonderful World', 'Louis Armstrong', 'whatawonderfulworldimg')">
+				<td><img class="jukebutton" id="whatawonderfulworldimg" src="buttonoff.png" /></td>
+				<td>Louis Armstrong<br><span class="MusicName">What A Wonderful World</span><br>Pop</td>
+			</tr>
+			<tr class="MusicBox" id="eminem" onclick="selectMusic('MUSIC/Eminem-WithoutMe.mp3', 'Without Me', 'Eminem', 'eminemimg')">
+				<td><img class="jukebutton" id="eminemimg" src="buttonoff.png" /></td>
+				<td>Eminem<br><span class="MusicName">Without Me</span><br>Rap</td>
+			</tr>
+			<tr class="MusicBox" id="yardbirdsuite" onclick="selectMusic('MUSIC/CharlieParker-SeptetYardbirdSuite.mp3', 'Yardbird Suite', 'Charlie Parker', 'yardbirdsuiteimg')">
+				<td><img class="jukebutton" id="yardbirdsuiteimg" src="buttonoff.png" /></td>
+				<td>Charlie Parker<br><span class="MusicName">Yardbird Suite</span><br>Jazz</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="caixasmenuMusicas" id="menuGenero">
+		<table id="GenderTable">
+			<tr class="MusicBox" id="indef"onclick="selectGender(indeftracks, 'indef')">
+				<td><span class="MusicName" >Indiferenciado</span><br></td>
+				<td><img class="jukebutton" id="indefimg" src="buttonplaying.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="blues" onclick="selectGender(bluestracks, 'blues')">
+				<td><span class="MusicName">Blues</span><br></td>
+				<td><img class="jukebutton" id="bluesimg" src="buttonoff.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="classic" onclick="selectGender(classictracks, 'classic')">
+				<td><span class="MusicName">Cl&aacute;ssica</span><br></td>
+				<td><img class="jukebutton" id="classicimg" src="buttonoff.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="eletronic" onclick="selectGender(eletronictracks,'eletronic')">
+				<td><span class="MusicName">Eletr&oacute;nica</span><br></td>
+				<td><img class="jukebutton" id="eletronicimg" src="buttonoff.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="jazz" onclick="selectGender(jazztracks, 'jazz')">
+				<td><span class="MusicName">Jazz</span><br></td>
+				<td><img class="jukebutton" id="jazzimg" src="buttonoff.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="metal" onclick="selectGender(metaltracks, 'metal')">
+				<td><span class="MusicName">Metal</span><br></td>
+				<td><img class="jukebutton" id="metalimg" src="buttonoff.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="pop" onclick="selectGender(poptracks, 'pop')">
+				<td><span class="MusicName">Pop</span><br></td>
+				<td><img class="jukebutton" id="popimg" src="buttonoff.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="rap" onclick="selectGender(raptracks, 'rap')">
+				<td><span class="MusicName">Rap</span><br></td>
+				<td><img class="jukebutton" id="rapimg" src="buttonoff.png" /></td>
+			</tr>
+			<tr class="MusicBox" id="rock" onclick="selectGender(rocktracks, 'rock')">
+				<td><span class="MusicName">Rock</span><br></td>
+				<td><img class="jukebutton" id="rockimg" src="buttonoff.png" /></td>
+			</tr>
+			
+		</table>
+	</div>
+	
+	<div class="botoesMenuMusica" id="botaomusicas" onclick="mostraMusicas()">
+		<br>M&Uacute;SICAS
+	</div>
+	
+	<div class="botoesMenuMusica" id="botaogeneros" onclick="mostraGenero()">
+		<br>G&Eacute;NEROS
+	</div>
+	
+	<script type="text/javascript">
+	indeftracks=['articmonkeys', 'bbking', 'beethoven', 'howdeepisyourlove', 'yardbirdsuite', 'edsheeran', 'eminem', 'layla', 'aintnobody', 'welcometothejungle', 'fireworks', 'whatawonderfulworld', 'metallica', 'buble', 'mozart', 'raycharles', 'sia', 'slipknot', 'snoopdre', 'sum41', 'chopsuey', 'valete', 'yiruma', 'waterfalls'];
+	bluestracks=['bbking','yardbirdsuite', 'layla'];
+	classictracks=['beethoven', 'mozart', 'yiruma'];
+	eletronictracks=['howdeepisyourlove', 'aintnobody', 'waterfalls'];
+	jazztracks=['buble','whatawonderfulworld', 'raycharles'];
+	metaltracks=['metallica', 'slipknot', 'chopsuey'];
+	poptracks=['edsheeran', 'fireworks', 'sia'];
+	raptracks=['eminem', 'snoopdre', 'valete'];
+	rocktracks=['articmonkeys', 'welcometothejungle', 'sum41'];
+	var tracks = indeftracks;
+	var musicwaiting = ["","","",""];
+	var musicplaying = ['MUSIC/EricClapton-Layla.mp3', 'Layla', 'Eric Clapton', 'laylaimg'];
+	var imggenderplaying = "indefimg";
+	var genderplaying = "indef";
+	var juke = document.getElementById("Jukebox");
+	juke.onended = function() {
+		var random_nr = Math.floor(Math.random() * tracks.length);
+		var id;
+		if(musicwaiting[0]=="") { 
+			id = "#" + tracks[random_nr];
+			$(id).click();
+		}
+		id = "#" + musicwaiting[0];
+		changeMusic(musicwaiting[0],musicwaiting[1],musicwaiting[2],musicwaiting[3]);
+		musicwaiting=["","","",""];
+		document.getElementById(imggenderplaying).src="buttonplaying.png";
+	};
+	
+	
+	function changeMusic(source, music, artist, img) {
+		document.getElementById("MusicPlayer").src = source;
+		document.getElementById("Jukebox").load();
+		document.getElementById("aTocar").innerHTML = music;
+		document.getElementById("artista").innerHTML = " - " + artist;
+		document.getElementById(musicplaying[3]).src="buttonoff.png";
+		document.getElementById(img).src="buttonplaying.png";
+		musicplaying[0]=source;
+		musicplaying[1]=music;
+		musicplaying[2]=artist;
+		musicplaying[3]=img;
+	}
+	
+	function selectMusic(source,music,artist,img){
+		var e1 = document.getElementById(img);
+		if(img==musicwaiting[3]) {
+			musicwaiting = ["","","",""];
+			e1.src="buttonoff.png";
+			if(img==musicplaying[3]) e1.src="buttonplaying.png";
+		}
+		else {
+			if(musicwaiting[3]!="") document.getElementById(musicwaiting[3]).src="buttonoff.png";
+			e1.src="buttonwaiting.png";
+			musicwaiting[0]=source;
+			musicwaiting[1]=music;
+			musicwaiting[2]=artist;
+			musicwaiting[3]=img;
+		}
+	}
+	
+	function selectGender(trackid, id) {
+		var img = id + 'img';
+		var e1 = document.getElementById(img);
+		var e2 = document.getElementById(imggenderplaying);
+		if(trackid==tracks) {alert('Impossible Operation');	}
+		else {
+			e2.src="buttonoff.png";
+			tracks=trackid;
+			e1.src="buttonwaiting.png";
+			imggenderplaying=img;
+			genderplaying=id;
+		}
+	}
+	</script>
+	
+</body>
+</html>

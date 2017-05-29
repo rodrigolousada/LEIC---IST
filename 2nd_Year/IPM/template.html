@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IPM</title>
+	<!--<link rel="stylesheet" href="style.css">-->
+	
+	<link rel="shortcut icon" href="ist.ico" type="image/x-icon" style="height:2px; width:1x;">
+	
+	<style type="text/css">
+		
+		ul#menu {
+			background-color:black;
+		}
+		
+		ul#menu li {
+			display: inline;
+		}
+
+		ul#menu li h2 {
+			display: inline-block;
+			background-color: DarkSlateGray;
+			color: white;
+			padding: 10px 20px;
+			border-radius: 4px 4px 0px 0px;
+		}
+
+		ul#menu li h2:hover {
+			background-color: orange;
+		}
+		
+		ul#menu a { 
+			font-size: 20px;
+			font-family: AdobeFanHeitiStd-Bold;
+		}
+		ul#menu a:link { 
+			color: white;
+			text-decoration:none;
+		}
+		ul#menu a:visited { 
+			color: steelblue; 
+			text-decoration: none;
+		}
+		ul#menu a:hover { 
+			color: orange;
+			text-decoration: underline;
+		}
+
+	</style>
+
+	<base target="iframe_basic">
+
+	<script type="text/javascript">
+	function untoglleVisible() {
+		var n='0';
+		var id1='au_inner';
+		var id2='arrow1';
+		while(1) {
+			if(n=='0') {n='1'}
+			else if(n=='1') {id1='mc_inner'; id2='arrow2'; n='2';}
+			else if (n=='2') {id1='proto_inner'; id2='arrow3'; n='3';}
+			else if (n=='3') {id1='at_inner'; id2='arrow4'; n='4';}
+			else {break;}
+			var e = document.getElementById(id1);
+			var image = document.getElementById(id2);
+			e.style.display = 'none';
+			image.src =	"closed.png";
+		}
+	}
+	
+	function toggleVisible(id1, id2) {
+		var e = document.getElementById(id1);
+		var image = document.getElementById(id2);
+		if(e.style.display == 'block') {
+			e.style.display = 'none';
+			image.src =	"closed.png";
+		}
+		else {
+			untoglleVisible();
+			e.style.display = 'block';
+			image.src =	"open.png";
+		}
+	}
+	
+	</script>
+</head>
+
+<!--#D6D6D6 background color-->
+<body style="font-family: calibri; text-align: center;" background='background.jpg' >
+	
+	<div id="header" style="text-align: left; padding: 10px">
+		<a href="https://tecnico.ulisboa.pt" target="_blank"><img id="IST" style="float:left" src="ist.png" width="140px"></a>
+		<table align=center style="float:right;">
+			<tr>
+				<td width="33%">Rodrigo Lousada</td>
+				<td width="33%">Carlos Antunes</td>
+				<td width="33%">Frederico Santos</td>
+			</tr>
+			<tr>
+				<td>81115</td>
+				<td>81525</td>
+				<td>80952</td>
+			</tr>
+			<tr>
+				<td><a href="https://www.linkedin.com/in/rodrigo-lousada-359685117?authType=NAME_SEARCH&authToken=2oZc" target="_blank"><img id="Lousada" title="LinkedIn" onmouseover="changePersonalImageOver('Lousada');" onmouseout="changePersonalImageOut('Lousada');" style = "border: solid black;" src = "ist181115(2).jpg" width="100"></a></td>
+				<td><a href="https://www.facebook.com/carlos.antunes.5458?fref=ts" target="_blank"><img id="Carlos" title="Facebook" onmouseover="changePersonalImageOver('Carlos');" onmouseout="changePersonalImageOut('Carlos');" style = "border: solid black;" src = "ist181525(2).jpg" width="100"></a></td>
+				<td><a href="https://www.facebook.com/fred.sant.101?fref=ts" target="_blank"><img id="Fred" title="Facebook" onmouseover="changePersonalImageOver('Fred');" onmouseout="changePersonalImageOut('Fred');" style = "border: solid black;" src = "ist180952(2).jpg" width="100"></a></td>
+			</tr>
+		</table>
+		<h1 style="color: #222222; padding-left:160px; font-family:britanic; font-size:50px;">Interfaces Pessoa M&aacute;quina 2015-16</h1>
+		<h2 style="color: #222222; padding-left:70px">Grupo 19 - Turno IPM201113L11</h2>
+	</div>
+	
+	<p>
+	<div id="links">
+		<ul id="menu" style="text-align: left;">
+			<li><h2><a href="welcome.html"><img src="home.png" width="23"></a></h2></li>
+			<li><h2 class="section" onclick="toggleVisible('at_inner','arrow1')">An&aacute;lise de Tarefas <img id="arrow1" src = "closed.png" width="10"></h2></li>
+			<li><h2 class="section" onclick="toggleVisible('mc_inner', 'arrow2')">Modelo Conceptual <img id="arrow2" src = "closed.png" width="10"></h2></li>
+			<li><h2 class="section" onclick="toggleVisible('proto_inner', 'arrow3')">Prot&oacute;tipos <img id="arrow3" src = "closed.png" width="10"></h2></li>
+			<li><h2 class="section" onclick="toggleVisible('au_inner', 'arrow4')">Avalia&ccedil;&atilde;o com Utilizadores <img id="arrow4" src = "closed.png" width="10"></h2></li>
+	
+		<div id="at" class="section">
+			<div id="at_inner" class="inner_section" style="display: none;">
+				<a href="https://docs.google.com/forms/d/1sGHA7OWkmBzit4yg7-Z2aBP481_rXNgHki2kFrHFnXU/viewform">Question&aacute;rio para an&aacute;lise de tarefas</a> <br />
+				<a href="https://docs.google.com/forms/d/15291QwKesLjI_KUNf2V2A-21-GuTXCw5z30FaUkB92g/viewform">Question&aacute;rio para an&aacute;lise de tarefas (melhorado)</a> <br />
+				<a href="at1.pdf">An&aacute;lise de tarefas + Funcionalidades</a> <br />
+				<a href="at2.pdf">An&aacute;lise de tarefas + Funcionalidades (melhorados)</a> <br />
+			</div>
+		</div>
+	
+		<div id="mc" class="section">
+			<div id="mc_inner" class="inner_section" style="display: none;">
+				<a href="mod-conceptual1.pdf">Modelo Conceptual</a> <br />
+				<a href="mod-conceptual2.pdf">Modelo Conceptual (melhorado)</a> <br />
+			</div>
+		</div>
+
+		<div id="proto" class="section">
+			<div id="proto_inner" class="inner_section" style="display: none;">
+				<a href="https://www.youtube.com/watch?v=ueliytCd9ZU&feature=youtu.be" target="_blank">PBF</a> <br />
+				<a href="pbf2.html">PBF (melhorado)</a> <br />
+				<a href="BARISTA/barista.html">Primeiro prot&oacute;tipo funcional</a> <br />
+				<a href="BARISTA1/barista.html">Primeiro prot&oacute;tipo funcional completo</a> <br />
+				<a href="BARISTA2/barista.html">Segundo prot&oacute;tipo funcional</a> <br />
+				<a href="BARISTA3/barista.html">Terceiro prot&oacute;tipo funcional</a><br />
+				<a href="BARISTA4/frame.html" target="_blank">Prot&oacute;tipo Final</a> <br />
+				<a href="BARISTA5/frame.html" target="_blank">Prot&oacute;tipo Final completo</a><br />
+			</div>
+		</div>
+
+		<div id="au" class="section">
+			<div id="au_inner" class="inner_section" style="display: none;">
+				<a href="tarefas-criterios1.pdf">Tarefas e Crit&eacute;rios de usabilidade</a> <br />
+				<a href="tarefas-criterios2.pdf">Tarefas e Crit&eacute;rios de usabilidade (melhorado)</a> <br />
+				<a href="relatorioTestes1.pdf">Relat&oacute;rio da avalia&ccedil;&atilde;o com utilizadores</a> <br />
+				<a href="relatorioTestes2.pdf">Relat&oacute;rio da avalia&ccedil;&atilde;o com utilizadores (melhorado)</a> <br />
+				<a href="manual.pdf">Manual do Utilizador</a> <br />
+			</div>
+		</div>
+		</ul>
+	</div>
+	</p>
+	
+	<iframe src="welcome.html" name="iframe_basic" style="width:1880px; height:800px; background-color:white; border: black solid;" ></iframe>
+	
+	<div id="footer" style="background-color:black; color:white; padding:10px;">
+		Copyright &copy; Grupo 19
+	</div>
+
+	
+	<script>
+		function changePersonalImageOver(id)	{
+			var	image =	document.getElementById(id);
+			if (id == 'Lousada') image.src = "ist181115(1).jpg";
+			else if (id == 'Carlos') { image.src = "ist181525(1).jpg"; image.width="99";}
+			else if (id == 'Fred') image.src = "ist180952(1).jpg";
+		}
+		
+		function changePersonalImageOut(id)	{
+			var	image =	document.getElementById(id);
+			if (id == 'Lousada') image.src = "ist181115(2).jpg";
+			else if (id == 'Carlos') image.src = "ist181525(2).jpg";
+			else if (id == 'Fred') image.src = "ist180952(2).jpg";
+		}
+	</script>
+
+
+</body>
+</html>
