@@ -1,6 +1,6 @@
-# FP - Fundamentos da Programação
+# FP - Fundamentos da ProgramaÃ§Ã£o
 
-###Language: Pyhton
+### Language: Pyhton
 
 ### 1st Project
 * Credit Cards Application
