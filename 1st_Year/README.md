@@ -5,5 +5,5 @@
 * [IAC - Introdução à Arquitectura de Computadores / Introduction to Computer Architecture (Assembly)](IAC)
 
 ### 2nd Semester
-* [LP - Lógica para Programação / Logic for Programming (Prolog)](1st_Year/LP)
+* [LP - Lógica para Programação / Logic for Programming (Prolog)](LP)
 * [IAED - Introdução aos Algoritmos e Estruturas de Dados / Introduction to Algorithms and Data Structures (C)](IAED)
