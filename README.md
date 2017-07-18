@@ -14,7 +14,7 @@ Projects made for subjects in my Bachelor of Computer Science and Engineering at
 
 ### 3rd Year
 * [BD - Bases de Dados / Databases (SQL/PHP)](3rd_Year/BD)
-* [CG - Computação Gráfica / Computer Graphics (JavaScript)](3rd_Year/CG)
+* [CG - Computação Gráfica / Computer Graphics (JavaScript)](https://github.com/rodrigolousada/CG-Space-Invaders)
 * [IA - Inteligência Artificial / Artificial Intelligence (Common Lisp)](3rd_Year/IA)
 * [RC - Redes e Computadores / Computer Networks (C)](3rd_Year/RC)
 
