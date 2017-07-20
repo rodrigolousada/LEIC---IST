@@ -17,6 +17,7 @@ Projects made for subjects in my Bachelor of Computer Science and Engineering at
 * [CG - Computação Gráfica / Computer Graphics (JavaScript)](https://github.com/rodrigolousada/CG-Space-Invaders)
 * [IA - Inteligência Artificial / Artificial Intelligence (Common Lisp)](3rd_Year/IA)
 * [RC - Redes e Computadores / Computer Networks (C)](3rd_Year/RC)
+* [Comp - Compiladores / Compilers (C++)](https://github.com/rodrigolousada/xpl-compiler)
 
 
 ## Attention: There is only a partial part of this repository translated to English. I am sorry for the inconvenience!
