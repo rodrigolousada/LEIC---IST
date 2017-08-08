@@ -18,6 +18,8 @@ Projects made for subjects in my Bachelor of Computer Science and Engineering at
 * [IA - Inteligência Artificial / Artificial Intelligence (Common Lisp)](3rd_Year/IA)
 * [RC - Redes e Computadores / Computer Networks (C)](3rd_Year/RC)
 * [Comp - Compiladores / Compilers (C++)](https://github.com/rodrigolousada/xpl-compiler)
+* [SD - Sistemas Distribuidos / Distributed Systems (Java)](https://github.com/rodrigolousada/A63-Komparator-mirror)
+* [ES - Engenharia de Software / Software Engineering (Java)](https://github.com/rodrigolousada/es17al_24-project-mirror)
 
 
 ## Attention: There is only a partial part of this repository translated to English. I am sorry for the inconvenience!
