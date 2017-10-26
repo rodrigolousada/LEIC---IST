@@ -21,6 +21,7 @@ Projects made for subjects in my Bachelor of Computer Science and Engineering at
 * [Comp - Compiladores / Compilers (C++)](https://github.com/rodrigolousada/xpl-compiler)
 * [SD - Sistemas Distribuidos / Distributed Systems (Java)](https://github.com/rodrigolousada/A63-Komparator)
 * [ES - Engenharia de Software / Software Engineering (Java)](https://github.com/rodrigolousada/es17al_24-project-mirror)
-* [CS - Computação e Sociedade / Computation and Society](3rd_Year/CS)
+* [CS - Computação e Sociedade / Computing and Society](3rd_Year/CS)
 
 ## Attention: There is only a partial part of this repository translated to English. I am sorry for the inconvenience!
+### If you want a specific translation about anything in this repo, please contact me!
